@@ -1,0 +1,85 @@
+#tab1 {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-background-color: #C2D7DB;
+    -fx-border-color: #848a94;
+}
+
+#tab2 {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-background-color: #C2D7DB;
+    -fx-border-color: #848a94;
+}
+
+#tab3 {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-background-color: #C2D7DB;
+    -fx-border-color: #848a94;
+}
+
+#tabPane{
+    -fx-border-color: #848a94;
+}
+
+#pane {
+    -fx-background-color: #C2D7DB;
+}
+
+#grid1 {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+#label1 {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+
+#tableView {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+
+#AddProductButton {
+    -fx-text-fill: black;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#848a94, #c9cbcf);
+    -fx-effect: dropShadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#AddProductButton:hover {
+    -fx-background-color: linear-gradient(#c9cbcf, #848a94);
+}
+
+#ancRecordPane {
+    -fx-font-size: 15px;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+
+#RecordProductButton {
+    -fx-text-fill: black;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#848a94, #c9cbcf);
+    -fx-effect: dropShadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#RecordProductButton:hover {
+    -fx-background-color: linear-gradient(#c9cbcf, #848a94);
+}
+
+#txtArea1 {
+    -fx-font-size: 15px;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+
