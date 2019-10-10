@@ -6,7 +6,7 @@ public abstract class Product implements Item {
   private String manufacturer;
   private String name;
 
-  Product(int id, String type, String manufacturer, String name) {
+ public Product(int id, String type, String manufacturer, String name) {
     this.id = id;
     this.type = type;
     this.manufacturer = manufacturer;
@@ -17,51 +17,46 @@ public abstract class Product implements Item {
     return type;
   }
 
-  public String setType(String type) {
+  public void setType(String type) {
     this.type = type;
-    return type;
   }
 
   public int getId() {
     return id;
   }
 
-  public int setId(int id) {
+  public void setId(int id) {
     this.id = id;
-    return id;
   }
 
   public String getManufacturer() {
     return manufacturer;
   }
 
-  public String setManufacturer(String manufacturer) {
+  public void setManufacturer(String manufacturer) {
     this.manufacturer = manufacturer;
-    return manufacturer;
   }
 
   public String getName() {
     return name;
   }
 
-  public String setName(String name) {
+  public void setName(String name) {
     this.name = name;
-    return name;
   }
 
   public String toString() {
     return "Product{"
-        + "id="
+        + "Id = "
         + id
-        + ", type='"
+        + ", Type = '"
         + type
         + '\''
-        + ", manufacturer='"
+        + ", Manufacturer = '"
         + manufacturer
         + '\''
-        + ", name='"
+        + ", Name = '"
         + name
-        + '\''
-        + '}';
+        + '\'';
   }
 }

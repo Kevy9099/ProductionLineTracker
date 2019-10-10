@@ -3,11 +3,11 @@ package sample;
 public interface Item {
   int getId();
 
-  String setName(String n);
+  void setName(String n);
 
   String getName();
 
-  String setManufacturer(String m);
+  void setManufacturer(String m);
 
   String getManufacturer();
 }

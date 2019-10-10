@@ -2,32 +2,45 @@
     -fx-font-size: 15px ;
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
-    -fx-background-color: #C2D7DB;
-    -fx-border-color: #848a94;
+    -fx-background-color: #8fb5bd;
+    -fx-border-color: black;
+    -fx-border-style: bold;
 }
 
 #tab2 {
     -fx-font-size: 15px ;
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
-    -fx-background-color: #C2D7DB;
-    -fx-border-color: #848a94;
+    -fx-background-color: #8fb5bd;
+    -fx-border-color: black;
 }
 
 #tab3 {
     -fx-font-size: 15px ;
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
-    -fx-background-color: #C2D7DB;
-    -fx-border-color: #848a94;
+    -fx-background-color: #8fb5bd;
+    -fx-border-color: black;
+}
+
+#tab1:hover{
+    -fx-background-color: red;
+}
+
+#tab2:hover{
+    -fx-background-color: red;
+}
+
+#tab3:hover{
+    -fx-background-color: red;
 }
 
 #tabPane{
-    -fx-border-color: #848a94;
+    -fx-border-color: black;
 }
 
 #pane {
-    -fx-background-color: #C2D7DB;
+    -fx-background-color: #6ea0aa;
 }
 
 #grid1 {
@@ -51,12 +64,12 @@
     -fx-text-fill: black;
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#848a94, #c9cbcf);
+    -fx-background-color: linear-gradient(#848a94, #d6d8db);
     -fx-effect: dropShadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
 #AddProductButton:hover {
-    -fx-background-color: linear-gradient(#c9cbcf, #848a94);
+    -fx-background-color: linear-gradient(#d6d8db, #848a94);
 }
 
 #ancRecordPane {
@@ -69,12 +82,12 @@
     -fx-text-fill: black;
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#848a94, #c9cbcf);
+    -fx-background-color: linear-gradient(#848a94, #d6d8db);
     -fx-effect: dropShadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
 #RecordProductButton:hover {
-    -fx-background-color: linear-gradient(#c9cbcf, #848a94);
+    -fx-background-color: linear-gradient(#d6d8db, #848a94);
 }
 
 #txtArea1 {
