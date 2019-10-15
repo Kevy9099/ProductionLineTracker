@@ -51,7 +51,7 @@ public class Controller {
   public void initialize() {
     // Connection establish.
     final String jdbcDriver = "org.h2.Driver";
-    final String dbUrl = "jdbc:h2:./res/H2";
+    final String dbUrl = "jdbc:h2:./Lib/H2";
 
     final String USER = "";
     final String PASS = "";
