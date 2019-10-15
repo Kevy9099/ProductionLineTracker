@@ -1,8 +1,10 @@
 package sample;
 // Issue 2 Vars for Item. Declaration not fixed yet, because the vars are not in used yet.
 public interface Item {
-  int getId();
 
+  private int getId() {
+    return 0;
+  }
   void setName(String n);
 
   String getName();

@@ -1,13 +1,11 @@
 package sample;
 
 public abstract class Product implements Item {
-  private int id;
   private String type;
   private String manufacturer;
   private String name;
 
- public Product(int id, String type, String manufacturer, String name) {
-    this.id = id;
+ public Product(String name, String type, String manufacturer) {
     this.type = type;
     this.manufacturer = manufacturer;
     this.name = name;
@@ -19,14 +17,6 @@ public abstract class Product implements Item {
 
   public void setType(String type) {
     this.type = type;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
   }
 
   public String getManufacturer() {
@@ -47,16 +37,7 @@ public abstract class Product implements Item {
 
   public String toString() {
     return "Product{"
-        + "Id = "
-        + id
-        + ", Type = '"
-        + type
-        + '\''
-        + ", Manufacturer = '"
-        + manufacturer
-        + '\''
-        + ", Name = '"
-        + name
-        + '\'';
+        + ", Type = '" + type + '\'' + ", Manufacturer = '"
+        + manufacturer + '\'' + ", Name = '" + name + '\'';
   }
 }
