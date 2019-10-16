@@ -1,4 +1,4 @@
-package sample;
+package io.github.kevy9099;
 
 public class MoviePlayer extends Product implements MultimediaControl {
     private String screen;

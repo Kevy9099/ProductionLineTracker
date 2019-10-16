@@ -1,6 +1,7 @@
-package sample;
+package io.github.kevy9099;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +27,8 @@ public class Controller {
   @FXML public Button RecordProductButton;
   @FXML private ComboBox<Integer> ProduceComboBox;
   @FXML private ChoiceBox<String> ChoiceBox;
+  @FXML private TextField productTxt;
+  @FXML private TextField productManu;
 
   // fx:id reference for ProdLineTrack.css file
   @FXML private TabPane tabPane;
@@ -38,57 +41,46 @@ public class Controller {
   @FXML private TextArea txtArea1;
   @FXML private TableView tableView;
 
-  @FXML
-  protected void handleAddButtonAction(ActionEvent event) {
-    System.out.println("Product has been added!");
-  }
+  private String querySQL;
+  private Connection conn;
+  private PreparedStatement pstmt;
 
   @FXML
   protected void handleRecordButtonAction(ActionEvent event) {
     System.out.println("Record Not Available...");
   }
 
+  @FXML
+  public void handleAddButtonAction(ActionEvent event) throws SQLException {
+    String prodName = productTxt.getText();
+    String prodManufacturer = productManu.getText();
+    String chosenItem = ChoiceBox.getValue();
+
+    initializeDB();
+
+    querySQL = "INSERT INTO PRODUCT (NAME, MANUFACTURER, TYPE) VALUES (?,?,?)";
+
+    pstmt = conn.prepareStatement(querySQL);
+
+    pstmt.setString(1, prodName);
+    pstmt.setString(2, prodManufacturer);
+    pstmt.setString(3, chosenItem);
+    pstmt.executeUpdate();
+
+    System.out.println("Inserted records into the table...");
+
+    productTxt.clear();
+    productManu.clear();
+  }
+
   public void initialize() {
-    // Connection establish.
-    final String jdbcDriver = "org.h2.Driver";
-    final String dbUrl = "jdbc:h2:./Lib/H2";
-
-    final String USER = "";
-    final String PASS = "";
-    Connection conn;
-    Statement stmt;
-
-    try {
-      Class.forName(jdbcDriver);
-
-      conn = DriverManager.getConnection(dbUrl, USER, PASS);
-
-      stmt = conn.createStatement();
-
-      //      String sql = "INSERT INTO Product(type,manufacturer, name) VALUES (protoType.getType()
-      // + 'iPod', 'Audio', 'Apple')";
-
-      String sql = "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) VALUES ('iPod', 'Audio', 'Apple')";
-
-      stmt.executeUpdate(sql);
-
-      System.out.println("Inserted records into the table...");
-
-      stmt.close();
-      conn.close();
-
-    } catch (ClassNotFoundException | SQLException e) {
-      e.printStackTrace();
-    }
+    initializeDB();
 
     // Populate the comboBox with an array of ints.
     ObservableList<Integer> List = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     ProduceComboBox.setItems(List);
     ProduceComboBox.getSelectionModel().selectFirst();
     ProduceComboBox.setEditable(true);
-
-    // for(int i = 0; i <= 10; i++){ // ProduceComboBox.getItems().add(i); // }
-    // A for loop for producing the added items. (This works, but I like the ObservableList).
 
     // populate choiceBox with an array of values from class items. using an enhance for loop.
     ObservableList<String> choiceList = FXCollections.observableArrayList();
@@ -97,5 +89,39 @@ public class Controller {
       choiceList.add(String.valueOf(it));
     }
     ChoiceBox.getItems().addAll(choiceList);
+
+      AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
+              "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
+      Screen newScreen = new Screen("720x480", 40, 22);
+      MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
+              MonitorType.LCD);
+      ArrayList<MultimediaControl> productList = new ArrayList<MultimediaControl>();
+      productList.add(newAudioProduct);
+      productList.add(newMovieProduct);
+      for (MultimediaControl p : productList) {
+        System.out.println(p);
+        p.play();
+        p.stop();
+        p.next();
+        p.previous();
+
+  }
+
+  private void initializeDB() {
+    // Connection establish.
+    final String jdbcDriver = "org.h2.Driver";
+    final String dbUrl = "jdbc:h2:./Lib/ProductDB";
+
+    final String USER = "";
+    final String PASS = "";
+
+    try {
+      Class.forName(jdbcDriver);
+
+      conn = DriverManager.getConnection(dbUrl, USER, PASS);
+
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+    }
   }
 }

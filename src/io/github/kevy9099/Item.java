@@ -1,4 +1,4 @@
-package sample;
+package io.github.kevy9099;
 // Issue 2 Vars for Item. Declaration not fixed yet, because the vars are not in used yet.
 public interface Item {
 

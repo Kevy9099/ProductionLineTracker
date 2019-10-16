@@ -1,4 +1,4 @@
-package sample;
+package io.github.kevy9099;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

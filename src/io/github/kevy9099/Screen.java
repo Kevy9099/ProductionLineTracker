@@ -1,4 +1,4 @@
-package sample;
+package io.github.kevy9099;
 
 public class Screen implements ScreenSpec {
     String resolution;

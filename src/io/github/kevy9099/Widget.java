@@ -1,4 +1,4 @@
-package sample;
+package io.github.kevy9099;
 
 import java.util.ArrayList;
 //Issue 2 Widget prototype error, not yet fixed.

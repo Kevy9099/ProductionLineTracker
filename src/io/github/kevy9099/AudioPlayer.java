@@ -1,11 +1,11 @@
-package sample;
+package io.github.kevy9099;
 
 public class AudioPlayer extends Product implements MultimediaControl{
     private String audioSpecification;
     private String mediaType;
 
-    public AudioPlayer(String name,  String manufacturer, String type, String audioSpecification, String mediaType) {
-        super(name, manufacturer, type);
+    public AudioPlayer(String name,  String manufacturer,  String audioSpecification, String mediaType) {
+        super(name, "AUDIO", manufacturer);
         this.audioSpecification = audioSpecification;
         this.mediaType = mediaType;
     }

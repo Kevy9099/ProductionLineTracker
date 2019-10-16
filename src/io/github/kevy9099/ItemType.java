@@ -1,4 +1,4 @@
-package sample;
+package io.github.kevy9099;
 //Issue 2
 public enum ItemType {
   Audio("AU"),

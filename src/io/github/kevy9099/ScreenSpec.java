@@ -1,4 +1,4 @@
-package sample;
+package io.github.kevy9099;
 
 public interface ScreenSpec {
     public String getResolution();
