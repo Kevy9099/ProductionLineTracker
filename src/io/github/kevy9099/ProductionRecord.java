@@ -3,25 +3,39 @@ package io.github.kevy9099;
 import java.util.Date;
 
 public class ProductionRecord {
-  int productionNumber;
-  int ProductID;
-  String serialNumber;
-  Date dateProduced;
+  private int productionNumber;
+  private int productID;
+  private String serialNumber;
+  private Date dateProduced;
+
+  public ProductionRecord(int productID) {
+    this.productID = productID;
+    productionNumber = 0;
+    serialNumber = "0";
+    dateProduced = new Date();
+  }
+
+  public ProductionRecord(int productionNumber, int productID, String serialNumber, Date dateProduced) {
+    this.productID = productID;
+    this.productionNumber = productionNumber;
+    this.dateProduced = dateProduced;
+    this.serialNumber = serialNumber;
+  }
 
   public int getProductionNumber() {
     return productionNumber;
   }
 
-  public void setProductionNumber(int productionNumber) {
+  public void setProductionNumber(int productionNumber){
     this.productionNumber = productionNumber;
   }
 
   public int getProductID() {
-    return ProductID;
+    return productID;
   }
 
   public void setProductID(int productID) {
-    ProductID = productID;
+    this.productID = productID;
   }
 
   public String getSerialNumber() {
@@ -39,4 +53,16 @@ public class ProductionRecord {
   public void setDateProduced(Date dateProduced) {
     this.dateProduced = dateProduced;
   }
+
+  public  String toString() {
+    return " Prod. Num: "
+            + productionNumber
+            + " Product ID: "
+            + productID
+            + " Serial Num: "
+            + serialNumber
+            + " Date: "
+            + dateProduced;
+  }
+
 }

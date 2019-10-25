@@ -56,7 +56,7 @@ public class Controller {
     String prodManufacturer = productManu.getText();
     String chosenItem = ChoiceBox.getValue();
 
-    initializeDB();
+//    initializeDB();
 
     querySQL = "INSERT INTO PRODUCT (NAME, MANUFACTURER, TYPE) VALUES (?,?,?)";
 
@@ -76,6 +76,10 @@ public class Controller {
   public void initialize() {
     initializeDB();
 
+    ProductionRecord record = new ProductionRecord(0);
+    String product = record.toString();
+    txtArea1.setText(product);
+
     // Populate the comboBox with an array of ints.
     ObservableList<Integer> List = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     ProduceComboBox.setItems(List);
@@ -90,21 +94,21 @@ public class Controller {
     }
     ChoiceBox.getItems().addAll(choiceList);
 
-      AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
-              "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
-      Screen newScreen = new Screen("720x480", 40, 22);
-      MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
-              MonitorType.LCD);
-      ArrayList<MultimediaControl> productList = new ArrayList<MultimediaControl>();
-      productList.add(newAudioProduct);
-      productList.add(newMovieProduct);
-      for (MultimediaControl p : productList) {
-        System.out.println(p);
-        p.play();
-        p.stop();
-        p.next();
-        p.previous();
-
+//    AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
+//            "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
+//    Screen newScreen = new Screen("720x480", 40, 22);
+//    MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
+//            MonitorType.LCD);
+//    ArrayList<MultimediaControl> productList = new ArrayList<MultimediaControl>();
+//    productList.add(newAudioProduct);
+//    productList.add(newMovieProduct);
+//    for (MultimediaControl p : productList) {
+//      System.out.println(p);
+//      p.play();
+//      p.stop();
+//      p.next();
+//      p.previous();
+//      }
   }
 
   private void initializeDB() {

@@ -1,48 +1,55 @@
 package io.github.kevy9099;
 
 public class MoviePlayer extends Product implements MultimediaControl {
-    private String screen;
-    private String monitorType;
+  Screen screen;
+  MonitorType monitorType;
 
-  public MoviePlayer(String type, String manufacturer, String name, String screen, String monitorType) {
+  public MoviePlayer(String name, String manufacturer, Screen screen, MonitorType monitorType) {
     super(name, "VISUAL", manufacturer);
-      this.screen = screen;
-      this.monitorType = monitorType;
-}
-    public void play() {
-        System.out.println("Playing...");
-    }
+    this.screen = screen;
+    this.monitorType = monitorType;
+  }
 
-    public void stop() {
-        System.out.println("Stopping...");
-    }
+  public void play() {
+    System.out.println("Playing...");
+  }
 
-    public void previous() {
-        System.out.println("<< Back");
-    }
+  public void stop() {
+    System.out.println("Stopping...");
+  }
 
-    public void next() {
-        System.out.println("Next >>");
-    }
+  public void previous() {
+    System.out.println("<< Back");
+  }
 
-    public String getScreen() {
-        return screen;
-    }
+  public void next() {
+    System.out.println("Next >>");
+  }
 
-    public void setScreen(String screen) {
-        this.screen = screen;
-    }
+  public Screen getScreen() {
+    return screen;
+  }
 
-    public String getMonitorType() {
-        return monitorType;
-    }
+  public void setScreen(Screen screen) {
+    this.screen = screen;
+  }
 
-    public void setMonitorType(String monitorType) {
-        this.monitorType = monitorType;
-    }
+  public MonitorType getMonitorType() {
+    return monitorType;
+  }
 
-    public String toString(){
-        return super.toString() + ", Screen Size = '" + this.screen + "\'"
-                + ", Monitor Type = '" + this.monitorType + "\'" + '}';
-    }
+  public void setMonitorType(MonitorType monitorType) {
+    this.monitorType = monitorType;
+  }
+
+  public String toString() {
+    return super.toString()
+        + ", Screen Size = '"
+        + this.screen
+        + "\'"
+        + ", Monitor Type = '"
+        + this.monitorType
+        + "\'"
+        + '}';
+  }
 }
