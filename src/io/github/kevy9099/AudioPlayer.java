@@ -5,31 +5,30 @@ public class AudioPlayer extends Product implements MultimediaControl{
     private String mediaType;
 
     public AudioPlayer(String name,  String manufacturer,  String audioSpecification, String mediaType) {
-        super(name, "AUDIO", manufacturer);
+        super(name, manufacturer, ItemType.Audio);
         this.audioSpecification = audioSpecification;
         this.mediaType = mediaType;
     }
 
   public String toString() {
-    System.out.println("Playing...");
     return super.toString() + ", AudioSpec = '" + this.audioSpecification + "\'"
             + ", MediaType = '" + this.mediaType + "\'" + '}';
     }
 
     public void play() {
-        System.out.println("Playing...");
+        System.out.println("Playing");
     }
 
     public void stop() {
-        System.out.println("Stopping...");
+        System.out.println("Stopping");
     }
 
     public void previous() {
-        System.out.println("<< Back");
+        System.out.println("Back");
     }
 
     public void next() {
-        System.out.println("Next >>");
+        System.out.println("Next");
     }
 
 

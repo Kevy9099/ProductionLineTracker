@@ -22,6 +22,12 @@ public class ProductionRecord {
     this.serialNumber = serialNumber;
   }
 
+  public ProductionRecord(Product productProduced, int counter) {
+    String idNumber = String.format("%05d", counter);
+    this.serialNumber = productProduced.getManufacturer().substring(0,3)+productProduced.getType().getValue()+idNumber;
+    this.dateProduced = new Date();
+  }
+
   public int getProductionNumber() {
     return productionNumber;
   }

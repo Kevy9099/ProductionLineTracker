@@ -1,5 +1,5 @@
 package io.github.kevy9099;
-//Issue 2
+
 public enum ItemType {
   Audio("AU"),
   Visual("VI"),
@@ -9,7 +9,7 @@ public enum ItemType {
   public final String values;
 
   ItemType(String value) {
-    values = value;
+    this.values = value;
   }
 
   public String getValue() {

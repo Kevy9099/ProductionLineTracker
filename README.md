@@ -4,7 +4,7 @@ to develop an application for a media player production facility that will keep 
 
 # Goals
 * Production tracking to be more automated.  
-* Loggin will be more accurate, and it will be easier to generate production reports. 
+* Login will be more accurate, and it will be easier to generate production reports. 
 * In addition to the ability to record production, the software also needs the ability to add to the product line.
 
 # Information and Resources
@@ -17,7 +17,7 @@ to develop an application for a media player production facility that will keep 
 # Sprint 1
 
 * Week 1
-  - Create a JavaFx Project using **Intellji**. 
+  - Create a JavaFx Project using **IntelliJ**. 
   - Add project to **GitHub**, make the repository **_private_**.
   - Documentation using a **README** file.
   
@@ -43,7 +43,7 @@ to develop an application for a media player production facility that will keep 
     - Added a **Label** called Existing Products and a **Table View**.
   - Inside the Produce Tab: 
     - Added an **AnchorPane**
-      - Added **2 Labels(_Choose Produce, and Choose Quantity_)**, A **List View** for Choose Produce, and a **ComboBox(_returns data type String_)** for Choose Qantity. 
+      - Added **2 Labels(_Choose Produce, and Choose Quantity_)**, A **List View** for Choose Produce, and a **ComboBox(_returns data type String_)** for Choose Quantity. 
   - Inside the Production Log Tab:
     - Added an **AnchorPane**.
       - Added a **TextArea**.
@@ -58,7 +58,7 @@ to develop an application for a media player production facility that will keep 
   - Added **Database Driver, Database Credentials, Open a Connection, and Execute a Query**.
   - Added to the Add Button event handler to add products into the database.
   - Added to the ComboBox
-    - Populated values from 1-10 in the **_initalize method_**  
+    - Populated values from 1-10 in the **_ initialize method_**  
     - Allow the user to enter other value inside the combobox. 
     - Show a default value. 
     

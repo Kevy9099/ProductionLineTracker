@@ -1,9 +1,9 @@
 package io.github.kevy9099;
 
 public class Screen implements ScreenSpec {
-  String resolution;
-  int refreshRate;
-  int responseTime;
+  final String resolution;
+  final int refreshRate;
+  final int responseTime;
 
   public Screen(String resolution, int refreshRate, int responseTime) {
     this.resolution = resolution;

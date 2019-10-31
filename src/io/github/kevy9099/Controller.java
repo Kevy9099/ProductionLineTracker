@@ -30,7 +30,7 @@ public class Controller {
   @FXML private TextField productTxt;
   @FXML private TextField productManu;
 
-  // fx:id reference for ProdLineTrack.css file
+  // fx:id reference for CSS file.
   @FXML private TabPane tabPane;
   @FXML private GridPane grid1;
   @FXML private Tab tab1;
@@ -41,11 +41,9 @@ public class Controller {
   @FXML private TextArea txtArea1;
   @FXML private TableView tableView;
 
-  private String querySQL;
   private Connection conn;
-  private PreparedStatement pstmt;
 
-  @FXML
+    @FXML
   protected void handleRecordButtonAction(ActionEvent event) {
     System.out.println("Record Not Available...");
   }
@@ -56,11 +54,9 @@ public class Controller {
     String prodManufacturer = productManu.getText();
     String chosenItem = ChoiceBox.getValue();
 
-//    initializeDB();
+    String querySQL = "INSERT INTO PRODUCT (NAME, MANUFACTURER, TYPE) VALUES(?,?,?)";
 
-    querySQL = "INSERT INTO PRODUCT (NAME, MANUFACTURER, TYPE) VALUES (?,?,?)";
-
-    pstmt = conn.prepareStatement(querySQL);
+    PreparedStatement pstmt = conn.prepareStatement(querySQL);
 
     pstmt.setString(1, prodName);
     pstmt.setString(2, prodManufacturer);
@@ -94,21 +90,22 @@ public class Controller {
     }
     ChoiceBox.getItems().addAll(choiceList);
 
-//    AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
-//            "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
-//    Screen newScreen = new Screen("720x480", 40, 22);
-//    MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
-//            MonitorType.LCD);
-//    ArrayList<MultimediaControl> productList = new ArrayList<MultimediaControl>();
-//    productList.add(newAudioProduct);
-//    productList.add(newMovieProduct);
-//    for (MultimediaControl p : productList) {
-//      System.out.println(p);
-//      p.play();
-//      p.stop();
-//      p.next();
-//      p.previous();
-//      }
+    AudioPlayer newAudioProduct =
+        new AudioPlayer(
+            "DP-X1A", "Onkyo", "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
+    Screen newScreen = new Screen("720x480", 40, 22);
+    MoviePlayer newMovieProduct =
+        new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen, MonitorType.LCD);
+    ArrayList<MultimediaControl> productList = new ArrayList<>();
+    productList.add(newAudioProduct);
+    productList.add(newMovieProduct);
+    for (MultimediaControl p : productList) {
+      System.out.println(p);
+      p.play();
+      p.stop();
+      p.next();
+      p.previous();
+    }
   }
 
   private void initializeDB() {

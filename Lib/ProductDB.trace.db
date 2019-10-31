@@ -80,7 +80,7 @@ INSERT INTO SCHEMA.PRODUCT (NAME, MANUFACTURER, TYPE) VALUES (?,?,?) [90079-199]
 	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8865)
 	at javafx.controls/javafx.scene.control.Button.fire(Button.java:200)
 	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:206)
-	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.controls/com.sun.javafx.scene.control.inputMap.InputMap.handle(InputMap.java:274)
 	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
 	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
 	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)

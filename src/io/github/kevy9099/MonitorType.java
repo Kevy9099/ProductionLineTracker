@@ -6,8 +6,8 @@ public enum MonitorType {
 
   public final String values;
 
-  MonitorType(String value) {
-    values = value;
+  MonitorType(String values1) {
+    values = values1;
   }
 
   public String getValue() {
