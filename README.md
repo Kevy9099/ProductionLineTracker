@@ -66,7 +66,7 @@ to develop an application for a media player production facility that will keep 
 
 * Week 6 - Enum, Interface, Abstract Class
 * Issue 1 - Product
-  - Created an **_Enum Class_** called ItemType.
+  - Created an **Enum** called ItemType.
     - This enum class holds 4 types and codes: **_Audio(AU), Visual(VI), AudioMobile(AM), VisualMobile(VM)_**.
   - Inside the Product Line Tab:
     - Filled the ChoiceBox with the types and used a for **enhanced for loop** to add all ItemTypes.
@@ -103,7 +103,39 @@ to develop an application for a media player production facility that will keep 
   - Created a driver class for AudioPlayer.
   
 * Week 8 - Polymorphism
-* Issue 3 - ScreenSpec, Screen, MoviePlayer
+* Issue 3 - MonitorType, ScreenSpec, Screen, MoviePlayer Classes
+  - Created an **Enum** called MonitorType.
+    - Stores 2 Type: LCD, and LED. 
+  - Created an **Interface** called ScreenSpec.
+    - Define 3 methods: getResolution, getRefreshRate(), and getResponseTime.
+  - Created a **Class** called Screen, that **implements** ScreenSpec.
+    - Added three fields: resolution, refreshrate, and responsetime
+  - Created a **Class** called MoviePlayer that **extends** Product, and **implements** MultimediaControl.
+  
+* Week 9
+* Issue 4 - ProductionRecord
+  - Created a **Class** called ProductionRecord.
+    - Create fields: productionNumber, productID, serialNumber, and dateProduced.
+  - **Overloaded Contructors** that hold different parameters.
+  - Create a **toString** to format: "Prod. Num: 0 Product ID: 0 Serial Num: 0 Date: Mon Oct 14 10:29:48 UTC 2019".
+  - Displays the production record in the TextArea and the Production Log.
+  
+* Week 10 Encapsulation
+* Issue  5 - Production Enhancement
+  - Added the **ability for the program to generate a unique serial number.**
+    - **Overloaded Constructor** that holds a count of items created, idNumber of each serial number, serialID, and dateProduce.
+  
+* Week 11 Lists and ArrayLists
+* Issue 6 - TableView
+  - Products are **added and display** to the TableView.
+    - Created an **ObservableList** name productLine to hold all the Products that can be produced.
+  - Display the production log in the tab TextArea.
+  
+# Sprint 3
+
+* Week 12 Lambda Expressions
+* Issue 7 - Full Database Integration
+  
         
         
         
