@@ -1,16 +1,16 @@
 package io.github.kevy9099;
 
 public enum MonitorType {
-  LCD(""),
-  LED("");
+  LCD(),
+  LED();
 
-  public final String values;
+  public final String monitors;
 
-  MonitorType(String values1) {
-    values = values1;
+  MonitorType() {
+    monitors = "";
   }
 
-  public String getValue() {
-    return this.values;
+  public String getMonitor() {
+    return this.monitors;
   }
 }

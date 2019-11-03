@@ -20,7 +20,7 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-    Scene scene = new Scene(root, 690, 630);
+    Scene scene = new Scene(root, 660, 620);
     root.setId("pane");
     primaryStage.setTitle("Production Line Tracker");
     primaryStage.setScene(scene);

@@ -5,6 +5,13 @@ public class Screen implements ScreenSpec {
   final int refreshRate;
   final int responseTime;
 
+  /**
+   * Describes the Screen Specifications of a product. Implements ScreenSpec class.
+   *
+   * @param resolution measure of an image display onto a screen.
+   * @param refreshRate measure of time in seconds to display images on a screen.
+   * @param responseTime measure of time in seconds the display interacts on a screen.
+   */
   public Screen(String resolution, int refreshRate, int responseTime) {
     this.resolution = resolution;
     this.refreshRate = refreshRate;
@@ -23,16 +30,20 @@ public class Screen implements ScreenSpec {
     return responseTime;
   }
 
+  /**
+   * Screen Specifications converts to strings, using toString( ) method.
+   *
+   * @return strings of Resolution, Refresh Rate, Response Time.
+   */
   public String toString() {
-    return "Screen:"
-        + '\n'
+    return "  "
         + "Resolution: "
         + resolution
-        + '\n'
-        + "Refresh rate: "
+        + "  "
+        + "Refresh Rate: "
         + refreshRate
-        + '\n'
-        + "Response time: "
+        + "  "
+        + "Response Time: "
         + responseTime;
   }
 }

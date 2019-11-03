@@ -1,11 +1,19 @@
 package io.github.kevy9099;
 
 public abstract class Product implements Item {
- public ItemType type;
+  public ItemType type;
   private String manufacturer;
   private String name;
 
- public Product(String name, String manufacturer, ItemType type) {
+  /**
+   * The parent class that describes the basic of a product. returns a name,manufacturer, and type
+   * of a product input by the user.
+   *
+   * @param name of the product.
+   * @param manufacturer or builder of the product.
+   * @param type the product is used for.
+   */
+  public Product(String name, String manufacturer, ItemType type) {
     this.type = type;
     this.manufacturer = manufacturer;
     this.name = name;
@@ -35,9 +43,21 @@ public abstract class Product implements Item {
     this.name = name;
   }
 
+  /**
+   * The parent toString( ), provides the basic details of a product.
+   *
+   * @return strings of name, manufacturer, and type.
+   */
   public String toString() {
-    return "Product{"
-        + ", Type = '" + type + '\'' + ", Manufacturer = '"
-        + manufacturer + '\'' + ", Name = '" + name + '\'';
+    return "Product = "
+        + " Name: "
+        + name
+        + "  "
+        + " Manufacturer: "
+        + manufacturer
+        + "  "
+        + " Type: "
+        + type
+        + "  ";
   }
 }
