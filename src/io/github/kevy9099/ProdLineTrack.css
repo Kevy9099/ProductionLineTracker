@@ -1,3 +1,8 @@
+/**
+ * Design for Production Line Tracker Application
+ *
+ *@author Kevin Mak 9/24/2019
+ */
 #tab1 {
     -fx-font-size: 15px ;
     -fx-font-family: "Courier New";
@@ -53,13 +58,19 @@
     -fx-font-weight: bold;
 }
 
+#tbvProduction {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+
 #tableView {
     -fx-font-size: 15px ;
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
 }
 
-#addProductButton {
+#btnAddProduct {
     -fx-text-fill: black;
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
@@ -67,7 +78,7 @@
     -fx-effect: dropShadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
-#addProductButton:hover {
+#btnAddProduct:hover {
     -fx-background-color: linear-gradient(#d6d8db, #848a94);
 }
 
@@ -77,7 +88,7 @@
     -fx-font-weight: bold;
 }
 
-#recordProductButton {
+#btnRecordProduct {
     -fx-text-fill: black;
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
@@ -85,7 +96,7 @@
     -fx-effect: dropShadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
-#recordProductButton:hover {
+#btnRecordProduct:hover {
     -fx-background-color: linear-gradient(#d6d8db, #848a94);
 }
 

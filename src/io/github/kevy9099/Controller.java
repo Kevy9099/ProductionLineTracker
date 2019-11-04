@@ -24,10 +24,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-// Controller runs the JavaFx.
+/**
+ * Controller class handles results and actions, such as: buttons, establishes database connection,
+ * and enabling items to be added to database. Allows information to be pulled by a single input to
+ * and from database, depending on its scope.
+ *
+ * @author Kevin Mak 9/24/2019
+ */
 public class Controller {
-  @FXML public Button addProductButton;
-  @FXML public Button recordProductButton;
+  // fx:Id initialize and connected to the FXML file.
+  @FXML public Button btnAddProduct;
+  @FXML public Button btnRecordProduct;
   @FXML private ChoiceBox<String> chbItemType;
   @FXML private ComboBox<Integer> cbQuantity;
   @FXML private TextField txtName;
@@ -38,15 +45,15 @@ public class Controller {
   @FXML private TableColumn<?, ?> tbcType;
   @FXML private ListView<Product> lvtChooseProd;
 
-  // fx:id reference for CSS file.
-  @FXML private TabPane tabPane;
-  @FXML private GridPane grid1;
-  @FXML private Tab tab1;
-  @FXML private Tab tab2;
-  @FXML private Tab tab3;
-  @FXML private Label lblExistProd;
-  @FXML private AnchorPane ancRecordPane;
+  // fx:Id initialize reference for CSS file.
   @FXML private TextArea txtProdLog;
+  @FXML public TabPane tabPane;
+  @FXML public Tab tab1;
+  @FXML public GridPane grid1;
+  @FXML public Label lblExistProd;
+  @FXML public Tab tab2;
+  @FXML public AnchorPane ancRecordPane;
+  @FXML public Tab tab3;
 
   // Global Variable Connection.
   private Connection conn;
@@ -54,6 +61,12 @@ public class Controller {
   // Global ObservableList.
   final ObservableList<Product> productLine = FXCollections.observableArrayList();
 
+  /**
+   * RecordButtonAction accepts user inputs of a product from AddButtonAction, displays the
+   * information in the ListView, and adds it to the database. (Not currently in use)
+   *
+   * @param event when the Add button is pressed, and input stores to db.
+   */
   @FXML
   protected void handleRecordButtonAction(ActionEvent event) {
     System.out.println("Record Not Available...");
@@ -106,12 +119,13 @@ public class Controller {
   }
 
   /**
-   * Initialize( ) is executed after the InitializrDB(DB connection) with in the controller.
-   * Populates the ComboBox, by an ObservableList that holds a list of integers. Populates the
-   * ChoiceBox, by an ObservableList that holds a list of String Types. This choiceBox is then loop
-   * though 4 different types.
+   * initialize method is the first method to run, it sets values in the combo box, starts the
+   * connection to the database, and gathers information from the database and stores it into a
+   * list. Database information is pass to an observable list. This list sets the values to text
+   * area, table view, and list view.
    */
   public void initialize() {
+    // connects and run database once for the application.
     initializeDB();
 
     ProductionRecord record = new ProductionRecord(0);
@@ -132,7 +146,7 @@ public class Controller {
     }
     chbItemType.getItems().addAll(choiceList);
 
-    // Audio Player tester.
+    // Audio Player Tester
     AudioPlayer newAudioProduct =
         new AudioPlayer(
             "DP-X1A", "Onkyo", "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
@@ -151,6 +165,10 @@ public class Controller {
     }
   }
 
+  /**
+   * initializeDB method is called once in initialize method. DB establishes a connection, user and
+   * pass.
+   */
   private void initializeDB() {
     // Connection establish.
     final String jdbcDriver = "org.h2.Driver";

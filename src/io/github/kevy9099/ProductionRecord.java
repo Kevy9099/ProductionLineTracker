@@ -2,6 +2,13 @@ package io.github.kevy9099;
 
 import java.util.Date;
 
+/**
+ * Production Record class creates data for a product, given unique details, keeps a count of
+ * similar data, and displays the information to the tableView. Constructors are overloaded that
+ * works didn't part of ProductionRecord.
+ *
+ * @author Kevin Mak 9/24/2019
+ */
 public class ProductionRecord {
   private int productionNumber;
   private int productID;
@@ -9,8 +16,8 @@ public class ProductionRecord {
   private Date dateProduced;
 
   /**
-   * A ProductionRecord when the user record production from the user interface and sets
-   * productionNumber to 0, serialNumber to 0, and a current date of creation.
+   * A ProductionRecord constructor for when a user records products from the user interface and
+   * sets productionNumber to 0, serialNumber to 0, and a current date of creation.
    *
    * @param productID corresponds to the productID from database.
    */
@@ -22,12 +29,13 @@ public class ProductionRecord {
   }
 
   /**
-   * An overloaded constructor used when creating productionRecord objects from the db.
+   * An overloaded constructor that initialize ProductionRecord fields.
    *
-   * @param productionNumber product auto-incremented number.
-   * @param productID sets to current productID.
-   * @param serialNumber product unique set of numbers.
-   * @param dateProduced current date and time.
+   * @param productionNumber Production Number is an unique number that is auto-incremented (ie 0)
+   * @param productID ProductID sets a current ID. (ie 0)
+   * @param serialNumber Serial Number unique set of numbers of a product. (ie AU0000)
+   * @param dateProduced Date Produced is the current date and time of creation. (ie 11/3/2019 at
+   *     11:02)
    */
   public ProductionRecord(
       int productionNumber, int productID, String serialNumber, Date dateProduced) {
@@ -38,10 +46,11 @@ public class ProductionRecord {
   }
 
   /**
-   * A constructor that produce a unique set of numbers for a product.
+   * A overloaded constructor that produce a unique set of numbers for a product.
    *
-   * @param productProduced is a product that gets a serial number.
-   * @param counter number of items of it type that as been created.
+   * @param productProduced Product Produced is a product that gets a serialNumber, idNumber, and
+   *     date.
+   * @param counter Counter is the number of items of its type that as been created.
    */
   public ProductionRecord(Product productProduced, int counter) {
     String idNumber = String.format("%05d", counter);
@@ -52,42 +61,84 @@ public class ProductionRecord {
     this.dateProduced = new Date();
   }
 
+  /**
+   * Method that enables access productionNumber.
+   *
+   * @return productionNumber
+   */
   public int getProductionNumber() {
     return productionNumber;
   }
 
+  /**
+   * Method that sets a value of productionNumber.
+   *
+   * @param productionNumber Production Number is an unique number that is auto-incremented (ie 0)
+   */
   public void setProductionNumber(int productionNumber) {
     this.productionNumber = productionNumber;
   }
 
+  /**
+   * Method that enables access to productID.
+   *
+   * @return productID
+   */
   public int getProductID() {
     return productID;
   }
 
+  /**
+   * Method that sets a value of productID.
+   *
+   * @param productID ProductID sets a current ID. (ie 0)
+   */
   public void setProductID(int productID) {
     this.productID = productID;
   }
 
+  /**
+   * Method that enables access serialNumber.
+   *
+   * @return serialNumber
+   */
   public String getSerialNumber() {
     return serialNumber;
   }
 
+  /**
+   * Method that sets a value of serialNumber.
+   *
+   * @param serialNumber Serial Number unique set of numbers of a product. (ie AU0000)
+   */
   public void setSerialNumber(String serialNumber) {
     this.serialNumber = serialNumber;
   }
 
+  /**
+   * Method that enables access dateProduced.
+   *
+   * @return dateProduced
+   */
   public Date getDateProduced() {
     return dateProduced;
   }
 
+  /**
+   * Method that sets a value of dateProduced.
+   *
+   * @param dateProduced Date Produced is the current date and time of creation. (ie 11/3/2019 at
+   *     11:02)
+   */
   public void setDateProduced(Date dateProduced) {
     this.dateProduced = dateProduced;
   }
 
   /**
-   * ProductionRecord fields are set as Strings, by toString() method.
+   * ProductionRecord fields returns as a single line String, using toString(). Printed to the
+   * console and the Production Log Text Area.
    *
-   * @return productionNumber, productID, serialNumber, and a Date of creation.
+   * @return productionNumber, productID, serialNumber, and a Date.
    */
   public String toString() {
     return " Prod. Num: "
