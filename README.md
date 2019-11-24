@@ -14,7 +14,7 @@ to develop an application for a media player production facility that will keep 
 4. TutorialPoint [Java-Enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
 5. Basic [Java](https://www.w3schools.com/java/), [SQL](https://www.w3schools.com/sql/), and [CSS](https://www.w3schools.com/css/) syntax
 
-# Sprint 1
+# Sprint 1 *Alpha*
 
 * Week 1
   - Create a JavaFx Project using **IntelliJ**. 
@@ -62,7 +62,7 @@ to develop an application for a media player production facility that will keep 
     - Allow the user to enter other value inside the combobox. 
     - Show a default value. 
     
-# Sprint 2
+# Sprint 2 *Beta*
 
 * Week 6 - Enum, Interface, Abstract Class
 * Issue 1 - Product
@@ -112,7 +112,7 @@ to develop an application for a media player production facility that will keep 
     - Added three fields: resolution, refreshRate, and responseTime
   - Created a **Class** called MoviePlayer that **extends** Product, and **implements** MultimediaControl.
   
-* Week 9
+* Week 9 Polymorphism 2
 * Issue 4 - ProductionRecord
   - Created a **Class** called ProductionRecord.
     - Create fields: productionNumber, productID, serialNumber, and dateProduced.
@@ -131,11 +131,58 @@ to develop an application for a media player production facility that will keep 
     - Created an **ObservableList** name productLine to hold all the Products that can be produced.
   - Display the production log in the tab TextArea.
   
-# Sprint 3
+# Sprint 3 *Release*
 
 * Week 12 Lambda Expressions
 * Issue 7 - Full Database Integration
-  
+  - Added the  H2 jar file to the Lib folder. 
+  - **Updated Initiliaze Method:**
+    - Call setUpProductionLine.
+    - Call loadProductList.
+    - Call loadProductionLog.
+  - **Updated addProductButton:**
+    - Insert added product into database.
+    - Created a Loop that runs through each productionRun object, and insert it to the ProductionRecord database table.
+  - **Updated loadProductList:**
+    - Created product objects from the product database table and added them to the productLine.
+  - **Updated recordProductionButton:**
+    - Select product from the productLine ListView and quantity from the comboBox.
+    - Created an ArrayList of ProductionRecord called **productionRun.**
+    - Sent productionRun to addToProductionDB method, includes a timestamp for objects.
+    - Call loadProductionLog.
+    - Call showProduction.
+  - **Updated showProduction:**
+    - Populated the textArea of Production Log with the information from the productionLog.
+  - **Updated loadProductionLog:**
+    - Created ProductionRecord object from the records in ProductionRecord database table. 
+    - Popluate the productionLog ArrrayList.
+    - Call showProduction.
+     
+* Week 13 Strings, and Regular Expressions
+* Issue 8    
+  - **Updated and Set** a password for the database.
+  - Created an Employee Tab and Employee Record:
+    - Allows input of full name, username, password and email.
+    - Method call setUsernamme and setEmail.
+    - Boolean validationg for checkName and isValidPassword.
+    - If name and password are not valid, set a defualt. 
+    - Overload a toString to produce: 
+```
+Employee Details
+Name : Tim Lee
+Username : tlee
+Email : tim.lee@oracleacademy.Test
+Initial Password : aBcd!
+```
+
+* Week 14 Recursion, and Modules
+* Issue 9 
+  - Created a Method called reverseString(String password):
+    - Ensures that sensitive information is not leaked, that the information is saved to the file of encoding.
+    - This is complish by recursively using a method called reverseString().
+    
+**COMPLETED**
+
         
         
         
