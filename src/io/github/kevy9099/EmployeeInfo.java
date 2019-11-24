@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
  * username, password and an email. (log In) it validates a password for each employee and checks
  * for employee name.
  */
-@SuppressWarnings("ALL")
 public class EmployeeInfo {
 
   final StringBuilder name;
@@ -117,7 +116,6 @@ public class EmployeeInfo {
     if (length == 0) {
       return password;
     }
-
     return reverseString(password.substring(1)) + password.charAt(0);
   }
 

@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Scanner;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,6 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -55,13 +57,19 @@ public class Controller {
 
   // fx:Id initialize reference for CSS file.
   @FXML private TextArea txtProdLog;
-  @FXML public TabPane tabPane;
+  @FXML public TextArea txtEmpLog;
+  @FXML public ImageView imgProductLine;
+  @FXML public ImageView imgProductLog;
+  @FXML public ImageView imgProductRecord;
+  @FXML public ImageView imgEmpLog;
+  @FXML public Tab tabEmpLog;
   @FXML public Tab tab1;
+  @FXML public Tab tab2;
+  @FXML public Tab tab3;
+  @FXML public TabPane tabPane;
   @FXML public GridPane grid1;
   @FXML public Label lblExistProd;
-  @FXML public Tab tab2;
   @FXML public AnchorPane ancRecordPane;
-  @FXML public Tab tab3;
 
   // Global Variable Connection and Statement.
   private Connection conn;
@@ -69,6 +77,9 @@ public class Controller {
 
   // Global ObservableList.
   final ObservableList<Product> productLine = FXCollections.observableArrayList();
+
+  // ArrayList Of ProductionRecord.
+  ArrayList<ProductionRecord> productionRun = new ArrayList<>();
 
   /**
    * RecordButtonAction calls addToProductionDB, showProduction, LoadProductionLog. This method
@@ -80,8 +91,23 @@ public class Controller {
    */
   @FXML
   protected void handleRecordButtonAction(ActionEvent event) throws SQLException {
-    // ArrayList Of ProductionRecord.
-    ArrayList<ProductionRecord> productionRun = new ArrayList<>();
+
+    for(ProductionRecord pr : productionRun){
+    int productId = pr.getProductID();
+    String serialNumber = pr.getSerialNumber();
+    Date date = pr.getDateProduced();
+
+    String querySql = "INSERT INTO PRODUCTIONRECORD(product_id, serial_num, date_produced) VALUES (?,?,?)";
+    PreparedStatement pstmt = conn.prepareStatement(querySql);
+    pstmt.setInt(1, productId);
+    pstmt.setString(2,serialNumber);
+    pstmt.setString(3, String.valueOf(date));
+    pstmt.executeUpdate();
+
+    int x = 1;
+    pstmt.setString(x, String.valueOf(pr));
+    x++;
+    }
 
     // dbRecord selects an item from the listView.
     Product dbRecord = lvtChooseProd.getSelectionModel().getSelectedItem();
@@ -202,7 +228,8 @@ public class Controller {
    *
    * @param productionRun An arrayList of productionRun.
    */
-  private void addToProductionDB(ArrayList<ProductionRecord> productionRun) {
+  private void addToProductionDB(ArrayList<ProductionRecord> productionRun) throws SQLException {
+
     // Creates a new timeStamp and date for objects created in the listView.
     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
     Date date = new Date();
@@ -243,6 +270,23 @@ public class Controller {
   }
 
   /**
+   * Allows input in the console, checks employee name and validates employee password. Prints
+   * Employee Details to the console and to txtArea of Employee tab.
+   */
+  private void employeeDetails() {
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Enter Employee Name (first last)");
+    String name = scan.nextLine();
+    System.out.println("Enter Employee password");
+    String password = scan.nextLine();
+    EmployeeInfo employee = new EmployeeInfo(name, password);
+    System.out.println(employee.reverseString(password));
+    System.out.println(employee);
+    txtEmpLog.setText(String.valueOf(employee));
+
+  }
+
+  /**
    * initialize method is the first method to run, it sets values in the combo box, starts the
    * connection to the database, and gathers information from the database and stores it into a
    * list. Database information is pass to an observable list. This list sets the values to text
@@ -269,6 +313,10 @@ public class Controller {
       choiceList.add(String.valueOf(it));
     }
     chbItemType.getItems().addAll(choiceList);
+
+    // Calls method EmployeeDetails.
+    employeeDetails();
+
   }
 
   /**

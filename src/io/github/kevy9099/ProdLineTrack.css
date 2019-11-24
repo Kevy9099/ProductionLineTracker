@@ -106,3 +106,41 @@
     -fx-font-weight: bold;
 }
 
+#txtEmpLog {
+    -fx-font-size: 15px;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+
+#tabEmpLog {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-background-color: #8fb5bd;
+    -fx-border-color: black;
+}
+
+#tabEmpLog:hover{
+    -fx-background-color: red;
+}
+
+#imgProductLine {
+    -fx-background-image: url("ProductionImg/kevy.PNG");
+    -fx-background-color: #8fb5bd;
+}
+
+#imgProductRecord {
+    -fx-background-image: url("ProductionImg/kevy.PNG");
+    -fx-background-color: #8fb5bd;
+}
+
+#imgProductLog{
+    -fx-background-image: url("ProductionImg/kevy.PNG");
+    -fx-background-color: #8fb5bd;
+}
+
+#imgEmpLog {
+    -fx-background-image: url("ProductionImg/kevy.PNG");
+    -fx-background-color: #8fb5bd;
+}
+
