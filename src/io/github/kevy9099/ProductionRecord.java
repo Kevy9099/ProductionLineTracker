@@ -62,6 +62,15 @@ public class ProductionRecord {
   }
 
   /**
+   * A constructor that sets a Date.
+   *
+   * @param dateProduced Current date.
+   */
+  public ProductionRecord(Date dateProduced) {
+    this.dateProduced = dateProduced;
+  }
+
+  /**
    * Method that enables access productionNumber.
    *
    * @return productionNumber

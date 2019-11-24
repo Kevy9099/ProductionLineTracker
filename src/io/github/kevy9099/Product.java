@@ -7,9 +7,9 @@ package io.github.kevy9099;
  * @author Kevin Mak 9/26/2019
  */
 public abstract class Product implements Item {
-  public ItemType type;
-  private String manufacturer;
   private String name;
+  private String manufacturer;
+  public ItemType type;
 
   /**
    * Constructor of class Product accepting and setting its own parameters.
@@ -19,9 +19,9 @@ public abstract class Product implements Item {
    * @param type Type for the Usage of the Product. (ie Audio)
    */
   public Product(String name, String manufacturer, ItemType type) {
+    this.name = name;
     this.type = type;
     this.manufacturer = manufacturer;
-    this.name = name;
   }
 
   /**
@@ -85,7 +85,7 @@ public abstract class Product implements Item {
    * @return strings of name, manufacturer, and type.
    */
   public String toString() {
-    return "Product = "
+    return " Product = "
         + " Name: "
         + name
         + "  "

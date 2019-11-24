@@ -109,14 +109,14 @@ to develop an application for a media player production facility that will keep 
   - Created an **Interface** called ScreenSpec.
     - Define 3 methods: getResolution, getRefreshRate(), and getResponseTime.
   - Created a **Class** called Screen, that **implements** ScreenSpec.
-    - Added three fields: resolution, refreshrate, and responsetime
+    - Added three fields: resolution, refreshRate, and responseTime
   - Created a **Class** called MoviePlayer that **extends** Product, and **implements** MultimediaControl.
   
 * Week 9
 * Issue 4 - ProductionRecord
   - Created a **Class** called ProductionRecord.
     - Create fields: productionNumber, productID, serialNumber, and dateProduced.
-  - **Overloaded Contructors** that hold different parameters.
+  - **Overloaded Constructor** that hold different parameters.
   - Create a **toString** to format: "Prod. Num: 0 Product ID: 0 Serial Num: 0 Date: Mon Oct 14 10:29:48 UTC 2019".
   - Displays the production record in the TextArea and the Production Log.
   

@@ -1,10 +1,18 @@
 package io.github.kevy9099;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Properties;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,21 +63,51 @@ public class Controller {
   @FXML public AnchorPane ancRecordPane;
   @FXML public Tab tab3;
 
-  // Global Variable Connection.
+  // Global Variable Connection and Statement.
   private Connection conn;
+  private Statement stmt;
 
   // Global ObservableList.
   final ObservableList<Product> productLine = FXCollections.observableArrayList();
 
   /**
-   * RecordButtonAction accepts user inputs of a product from AddButtonAction, displays the
-   * information in the ListView, and adds it to the database. (Not currently in use)
+   * RecordButtonAction calls addToProductionDB, showProduction, LoadProductionLog. This method
+   * creates an ArrayList of ProductionRecord called productionRun, that associates with productLine
+   * listView items. Selecting an item will get productionLog information, display on Production Log
+   * textArea, saved to the ProductionRecord database.
    *
    * @param event when the Add button is pressed, and input stores to db.
    */
   @FXML
-  protected void handleRecordButtonAction(ActionEvent event) {
-    System.out.println("Record Not Available...");
+  protected void handleRecordButtonAction(ActionEvent event) throws SQLException {
+    // ArrayList Of ProductionRecord.
+    ArrayList<ProductionRecord> productionRun = new ArrayList<>();
+
+    // dbRecord selects an item from the listView.
+    Product dbRecord = lvtChooseProd.getSelectionModel().getSelectedItem();
+
+    // quantity selects a listView item and correspond it with a integer from the comboBox.
+    // cast the cbQuantity an amount of times, depending on the number chosen.
+    int quantity =
+        Integer.parseInt(String.valueOf(cbQuantity.getSelectionModel().getSelectedItem()));
+
+    // ProductionRecord variable.
+    ProductionRecord pr;
+
+    // loop through the amount of quantity.
+    for (int i = 1; i < quantity; i++) {
+      pr = new ProductionRecord(dbRecord, i);
+      productionRun.add(pr);
+    }
+
+    // calls addToProductionDB and adds productionRun.
+    addToProductionDB(productionRun);
+
+    // calls showProduction and adds productionRun.
+    showProduction(productionRun);
+
+    // calls loadProductionLog and adds productionRun.
+    loadProductionLog(productionRun);
   }
 
   /**
@@ -98,24 +136,110 @@ public class Controller {
     pstmt.setString(3, chosenItem);
     pstmt.executeUpdate();
 
+    // Testing for insertion of products.
     System.out.println("Inserted records into the table...");
 
     // Clears the text field of name and manufacturer.
     txtName.clear();
     txtMan.clear();
 
-    // table columns are used to set name, manufacturer, and type in the tableView.
-    // sets the items to productLine(observableList).
-    // adds an object of widgets that holds the fields of product.
-    tbcName.setCellValueFactory(new PropertyValueFactory("name"));
-    tbcMan.setCellValueFactory(new PropertyValueFactory("manufacturer"));
-    tbcType.setCellValueFactory(new PropertyValueFactory("type"));
+    //  Adds Items of Product to TableView and ListView.
+    setupProductLineTable(productLine);
 
-    tbvProduction.setItems(productLine);
+    // Adds the current data in to the TableView and ListView.
+    loadProductionList(productLine);
+  }
 
-    productLine.add(new Widget(prodName, prodMan, ItemType.valueOf((chosenItem))));
+  /**
+   * Table columns are used to set name, manufacturer, and type in the tableView. Display Products
+   * in TableView and ListView when add button is clicked.
+   *
+   * @param productLine An observableList of a product.
+   */
+  private void setupProductLineTable(ObservableList<Product> productLine) {
 
-    lvtChooseProd.setItems(productLine);
+    // Table columns are set to product textFields inputs.
+    tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
+    tbcMan.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
+    tbcType.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+    // Displays the Products from ProductLine in TableView.
+    tbvProduction.setItems(this.productLine);
+
+    // Displays the Products from ProductLine in ListView.
+    lvtChooseProd.setItems(this.productLine);
+  }
+
+  /**
+   * A function that that creates Product objects from the Product database table and adds them to
+   * the productLine ObservableList.
+   *
+   * @param productLine An observable list that hold product objects.
+   */
+  private void loadProductionList(ObservableList<Product> productLine) throws SQLException {
+    // Select all from product table.
+    String sql = "SELECT * FROM PRODUCT";
+    stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery(sql);
+
+    // gets items from product table.
+    while (rs.next()) {
+      String name = rs.getString(2);
+      String manufacturer = rs.getString(3);
+      String type = rs.getString(4);
+
+      // Product object called dbProduct, holds name, manufacturer and type.
+      Product dbProduct = new Product(name, manufacturer, ItemType.valueOf((type))) {};
+
+      // adds the dbProduct to the productLine.
+      productLine.add(dbProduct);
+    }
+  }
+
+  /**
+   * A function that adds information to ProductionRecord table (ProductionNumber, ProductionID,
+   * SerialNumber, and Date).
+   *
+   * @param productionRun An arrayList of productionRun.
+   */
+  private void addToProductionDB(ArrayList<ProductionRecord> productionRun) {
+    // Creates a new timeStamp and date for objects created in the listView.
+    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    Date date = new Date();
+    System.out.println(new Timestamp(date.getTime()));
+    System.out.println(timestamp.getTime());
+  }
+
+  /**
+   * A function that sets the productionRun arrayList objects to the textArea of production Log.
+   * Displays the Information from the productionLog, replacing the productId with the productName.
+   *
+   * @param productionRun An arrayList of productionRun.
+   */
+  private void showProduction(ArrayList<ProductionRecord> productionRun) {
+    txtProdLog.setText(productionRun.toString());
+  }
+
+  /**
+   * A function that select all from productionRecord ( productionNumber, productionId, serial and
+   * date). Display for the textArea. populates he productionLog ArrayList.
+   *
+   * @param productionRun An arrayList of productionRun.
+   */
+  private void loadProductionLog(ArrayList<ProductionRecord> productionRun) throws SQLException {
+    String sql = "SELECT * FROM PRODUCTIONRECORD";
+    stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery(sql);
+    while (rs.next()) {
+      int number = rs.getInt(2);
+      int id = rs.getInt(3);
+      String serial = rs.getString(4);
+      Date date = rs.getDate(5);
+
+      ProductionRecord dbRecord = new ProductionRecord(number, id, serial, date) {};
+
+      productionRun.add(dbRecord);
+    }
   }
 
   /**
@@ -124,10 +248,11 @@ public class Controller {
    * list. Database information is pass to an observable list. This list sets the values to text
    * area, table view, and list view.
    */
-  public void initialize() {
+  public void initialize() throws IOException {
     // connects and run database once for the application.
     initializeDB();
 
+    // Display an object of ProductionRecord in Text Area
     ProductionRecord record = new ProductionRecord(0);
     String product = record.toString();
     txtProdLog.setText(product);
@@ -141,41 +266,28 @@ public class Controller {
     // populate choiceBox with an array of values from class items. using an enhance for loop.
     ObservableList<String> choiceList = FXCollections.observableArrayList();
     for (ItemType it : ItemType.values()) {
-      System.out.println(it + " " + it.values);
       choiceList.add(String.valueOf(it));
     }
     chbItemType.getItems().addAll(choiceList);
-
-    // Audio Player Tester
-    AudioPlayer newAudioProduct =
-        new AudioPlayer(
-            "DP-X1A", "Onkyo", "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
-    Screen newScreen = new Screen("720x480", 40, 22);
-    MoviePlayer newMovieProduct =
-        new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen, MonitorType.LCD);
-    ArrayList<MultimediaControl> productList = new ArrayList<>();
-    productList.add(newAudioProduct);
-    productList.add(newMovieProduct);
-    for (MultimediaControl p : productList) {
-      System.out.println(p);
-      p.play();
-      p.stop();
-      p.next();
-      p.previous();
-    }
   }
 
   /**
    * initializeDB method is called once in initialize method. DB establishes a connection, user and
    * pass.
    */
-  private void initializeDB() {
+  private void initializeDB() throws IOException {
     // Connection establish.
     final String jdbcDriver = "org.h2.Driver";
     final String dbUrl = "jdbc:h2:./Lib/ProductDB";
 
+    // Initialize a User and Pass.
     final String user = "";
-    final String pass = "";
+    final String pass;
+
+    // Properties gets and set the password from file.
+    Properties prop = new Properties();
+    prop.load(new FileInputStream("Lib/Properties"));
+    pass = prop.getProperty("password");
 
     try {
       Class.forName(jdbcDriver);
