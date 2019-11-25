@@ -91,23 +91,24 @@ public class Controller {
    */
   @FXML
   protected void handleRecordButtonAction(ActionEvent event) throws SQLException {
-
-    for(ProductionRecord pr : productionRun){
-    int productId = pr.getProductID();
-    String serialNumber = pr.getSerialNumber();
-    Date date = pr.getDateProduced();
-
-    String querySql = "INSERT INTO PRODUCTIONRECORD(product_id, serial_num, date_produced) VALUES (?,?,?)";
-    PreparedStatement pstmt = conn.prepareStatement(querySql);
-    pstmt.setInt(1, productId);
-    pstmt.setString(2,serialNumber);
-    pstmt.setString(3, String.valueOf(date));
-    pstmt.executeUpdate();
-
-    int x = 1;
-    pstmt.setString(x, String.valueOf(pr));
-    x++;
-    }
+    //
+    //    for(ProductionRecord pr : productionRun){
+    //    int productId = pr.getProductID();
+    //    String serialNumber = pr.getSerialNumber();
+    //    Date date = pr.getDateProduced();
+    //
+    //    String querySql = "INSERT INTO PRODUCTIONRECORD(product_id, serial_num, date_produced)
+    // VALUES (?,?,?)";
+    //    PreparedStatement pstmt = conn.prepareStatement(querySql);
+    //    pstmt.setInt(1, productId);
+    //    pstmt.setString(2,serialNumber);
+    //    pstmt.setString(3, String.valueOf(date));
+    //        pstmt.executeUpdate();
+    //
+    //    int x = 1;
+    //    pstmt.setString(x, String.valueOf(pr));
+    //    x++;
+    //    }
 
     // dbRecord selects an item from the listView.
     Product dbRecord = lvtChooseProd.getSelectionModel().getSelectedItem();
@@ -121,7 +122,7 @@ public class Controller {
     ProductionRecord pr;
 
     // loop through the amount of quantity.
-    for (int i = 1; i < quantity; i++) {
+    for (int i = 0; i < quantity; i++) {
       pr = new ProductionRecord(dbRecord, i);
       productionRun.add(pr);
     }
@@ -229,7 +230,6 @@ public class Controller {
    * @param productionRun An arrayList of productionRun.
    */
   private void addToProductionDB(ArrayList<ProductionRecord> productionRun) throws SQLException {
-
     // Creates a new timeStamp and date for objects created in the listView.
     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
     Date date = new Date();
@@ -249,7 +249,7 @@ public class Controller {
 
   /**
    * A function that select all from productionRecord ( productionNumber, productionId, serial and
-   * date). Display for the textArea. populates he productionLog ArrayList.
+   * date). Display for the textArea. populates the productionLog ArrayList.
    *
    * @param productionRun An arrayList of productionRun.
    */
@@ -266,6 +266,8 @@ public class Controller {
       ProductionRecord dbRecord = new ProductionRecord(number, id, serial, date) {};
 
       productionRun.add(dbRecord);
+
+      showProduction(productionRun);
     }
   }
 
@@ -283,7 +285,6 @@ public class Controller {
     System.out.println(employee.reverseString(password));
     System.out.println(employee);
     txtEmpLog.setText(String.valueOf(employee));
-
   }
 
   /**
@@ -316,7 +317,6 @@ public class Controller {
 
     // Calls method EmployeeDetails.
     employeeDetails();
-
   }
 
   /**
