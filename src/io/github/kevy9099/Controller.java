@@ -107,36 +107,9 @@ public class Controller {
     for (int i = 0; i < quantity; i++) {
       pr = new ProductionRecord(record, i);
       productionRun.add(pr);
-
-      int prodID = pr.getProductID();
-      String serialNum = pr.getSerialNumber();
-      Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-
-      // SerialNumber error, can't convert to string?
-
-//            String sql =
-//                "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID,SERIAL_NUM,DATE_PRODUCED)VALUES('"
-//                    + prodID
-//                    + "','"
-//                    + serialNum
-//                    + "','"
-//                    + timestamp
-//                    + "')";
-//            PreparedStatement pstmt = conn.prepareStatement(sql);
-//            pstmt.executeUpdate();
-
-      String sql =
-          "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM,DATE_PRODUCED)VALUES (?,?,?)";
-      PreparedStatement pstmt = conn.prepareStatement(sql);
-
-      pstmt.setInt(1, prodID);
-      pstmt.setString(2, serialNum);
-      pstmt.setTimestamp(3, timestamp);
-
-      pstmt.executeUpdate();
-
-      System.out.println("Inserted records into the table...");
+      System.out.println("Added pr");
     }
+    addToProductionDB(productionRun);
 
     // calls showProduction and adds productionRun.
     showProduction(productionRun);
@@ -182,7 +155,7 @@ public class Controller {
     setupProductLineTable(productLine);
 
     // Adds the current data in to the TableView and ListView.
-    loadProductionList(productLine);
+    loadProductList(productLine);
   }
 
   /**
@@ -211,7 +184,7 @@ public class Controller {
    *
    * @param productLine An observable list that hold product objects.
    */
-  private void loadProductionList(ObservableList<Product> productLine) throws SQLException {
+  private void loadProductList(ObservableList<Product> productLine) throws SQLException {
     // Select all from product table.
     String sql = "SELECT * FROM PRODUCT";
     stmt = conn.createStatement();
@@ -238,11 +211,24 @@ public class Controller {
    * @param productionRun An arrayList of productionRun.
    */
   private void addToProductionDB(ArrayList<ProductionRecord> productionRun) throws SQLException {
-    // Creates a new timeStamp and date for objects created in the listView.
-    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-    Date date = new Date();
-    System.out.println(new Timestamp(date.getTime()));
-    System.out.println(timestamp.getTime());
+    for (ProductionRecord pr : productionRun) {
+
+      int prodID = pr.getProductID();
+      String serialNum = pr.getSerialNumber();
+      Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+      String sql =
+          "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM,DATE_PRODUCED)VALUES (?,?,?)";
+      PreparedStatement pstmt = conn.prepareStatement(sql);
+
+      pstmt.setInt(1, prodID);
+      pstmt.setString(2, serialNum);
+      pstmt.setTimestamp(3, timestamp);
+
+      pstmt.executeUpdate();
+
+      System.out.println("Inserted records into the table...");
+    }
   }
 
   /**
@@ -266,13 +252,14 @@ public class Controller {
     stmt = conn.createStatement();
     ResultSet rs = stmt.executeQuery(sql);
     while (rs.next()) {
-      int number = rs.getInt(2);
-      int id = rs.getInt(3);
-      String serial = rs.getString(4);
-      Date date = rs.getDate(5);
+      int number = rs.getInt("Production_Num");
+      int id = rs.getInt("Product_ID");
+      String serial = rs.getString("Serial_Num");
+      Date date = rs.getDate("Date_Produced");
 
       ProductionRecord dbRecord = new ProductionRecord(number, id, serial, date) {};
-
+      System.out.println("Here");
+      System.out.println(dbRecord.toString());
       productionRun.add(dbRecord);
 
       showProduction(productionRun);
