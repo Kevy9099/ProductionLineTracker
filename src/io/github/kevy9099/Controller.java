@@ -91,44 +91,52 @@ public class Controller {
    */
   @FXML
   protected void handleRecordButtonAction(ActionEvent event) throws SQLException {
-    //
-    //    for(ProductionRecord pr : productionRun){
-    //    int productId = pr.getProductID();
-    //    String serialNumber = pr.getSerialNumber();
-    //    Date date = pr.getDateProduced();
-    //
-    //    String querySql = "INSERT INTO PRODUCTIONRECORD(product_id, serial_num, date_produced)
-    // VALUES (?,?,?)";
-    //    PreparedStatement pstmt = conn.prepareStatement(querySql);
-    //    pstmt.setInt(1, productId);
-    //    pstmt.setString(2,serialNumber);
-    //    pstmt.setString(3, String.valueOf(date));
-    //        pstmt.executeUpdate();
-    //
-    //    int x = 1;
-    //    pstmt.setString(x, String.valueOf(pr));
-    //    x++;
-    //    }
 
     // dbRecord selects an item from the listView.
-    Product dbRecord = lvtChooseProd.getSelectionModel().getSelectedItem();
+    Product record = lvtChooseProd.getSelectionModel().getSelectedItem();
 
     // quantity selects a listView item and correspond it with a integer from the comboBox.
     // cast the cbQuantity an amount of times, depending on the number chosen.
-    int quantity =
-        Integer.parseInt(String.valueOf(cbQuantity.getSelectionModel().getSelectedItem()));
+    int quantity;
+    quantity = Integer.parseInt(String.valueOf(cbQuantity.getSelectionModel().getSelectedItem()));
 
     // ProductionRecord variable.
     ProductionRecord pr;
 
     // loop through the amount of quantity.
     for (int i = 0; i < quantity; i++) {
-      pr = new ProductionRecord(dbRecord, i);
+      pr = new ProductionRecord(record, i);
       productionRun.add(pr);
-    }
 
-    // calls addToProductionDB and adds productionRun.
-    addToProductionDB(productionRun);
+      int prodID = pr.getProductID();
+      String serialNum = pr.getSerialNumber();
+      Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+      // SerialNumber error, can't convert to string?
+
+//            String sql =
+//                "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID,SERIAL_NUM,DATE_PRODUCED)VALUES('"
+//                    + prodID
+//                    + "','"
+//                    + serialNum
+//                    + "','"
+//                    + timestamp
+//                    + "')";
+//            PreparedStatement pstmt = conn.prepareStatement(sql);
+//            pstmt.executeUpdate();
+
+      String sql =
+          "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM,DATE_PRODUCED)VALUES (?,?,?)";
+      PreparedStatement pstmt = conn.prepareStatement(sql);
+
+      pstmt.setInt(1, prodID);
+      pstmt.setString(2, serialNum);
+      pstmt.setTimestamp(3, timestamp);
+
+      pstmt.executeUpdate();
+
+      System.out.println("Inserted records into the table...");
+    }
 
     // calls showProduction and adds productionRun.
     showProduction(productionRun);
@@ -186,9 +194,9 @@ public class Controller {
   private void setupProductLineTable(ObservableList<Product> productLine) {
 
     // Table columns are set to product textFields inputs.
-    tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
-    tbcMan.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
-    tbcType.setCellValueFactory(new PropertyValueFactory<>("type"));
+    tbcName.setCellValueFactory(new PropertyValueFactory("name"));
+    tbcMan.setCellValueFactory(new PropertyValueFactory("manufacturer"));
+    tbcType.setCellValueFactory(new PropertyValueFactory("type"));
 
     // Displays the Products from ProductLine in TableView.
     tbvProduction.setItems(this.productLine);

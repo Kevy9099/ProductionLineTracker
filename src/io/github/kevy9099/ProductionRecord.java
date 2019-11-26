@@ -33,7 +33,7 @@ public class ProductionRecord {
    *
    * @param productionNumber Production Number is an unique number that is auto-incremented (ie 0)
    * @param productID ProductID sets a current ID. (ie 0)
-   * @param serialNumber Serial Number unique set of numbers of a product. (ie AU0000)
+   * @param serialNumber Serial Number unique set of numbers of a product. (ie appAU0000)
    * @param dateProduced Date Produced is the current date and time of creation. (ie 11/3/2019 at
    *     11:02)
    */
@@ -43,7 +43,6 @@ public class ProductionRecord {
     this.productID = productID;
     this.serialNumber = serialNumber;
     this.dateProduced = dateProduced;
-
   }
 
   /**
@@ -119,7 +118,7 @@ public class ProductionRecord {
   /**
    * Method that sets a value of serialNumber.
    *
-   * @param serialNumber Serial Number unique set of numbers of a product. (ie AU0000)
+   * @param serialNumber Serial Number unique set of numbers of a product. (ie appAU0000)
    */
   public void setSerialNumber(String serialNumber) {
     this.serialNumber = serialNumber;
@@ -160,4 +159,6 @@ public class ProductionRecord {
         + " Date: "
         + dateProduced;
   }
+
+
 }
