@@ -136,7 +136,7 @@ to develop an application for a media player production facility that will keep 
 * Week 12 Lambda Expressions
 * Issue 7 - Full Database Integration
   - Added the  H2 jar file to the Lib folder. 
-  - **Updated Initiliaze Method:**
+  - **Updated Initialize Method:**
     - Call setUpProductionLine.
     - Call loadProductList.
     - Call loadProductionLog.
@@ -155,7 +155,7 @@ to develop an application for a media player production facility that will keep 
     - Populated the textArea of Production Log with the information from the productionLog.
   - **Updated loadProductionLog:**
     - Created ProductionRecord object from the records in ProductionRecord database table. 
-    - Popluate the productionLog ArrrayList.
+    - Populate the productionLog ArrayList.
     - Call showProduction.
      
 * Week 13 Strings, and Regular Expressions
@@ -163,9 +163,9 @@ to develop an application for a media player production facility that will keep 
   - **Updated and Set** a password for the database.
   - Created an Employee Tab and Employee Record:
     - Allows input of full name, username, password and email.
-    - Method call setUsernamme and setEmail.
-    - Boolean validationg for checkName and isValidPassword.
-    - If name and password are not valid, set a defualt. 
+    - Method call setUsername and setEmail.
+    - Boolean validating for checkName and isValidPassword.
+    - If name and password are not valid, set a default. 
     - Overload a toString to produce: 
 ```
 Employee Details
@@ -179,12 +179,12 @@ Initial Password : aBcd!
 * Issue 9 
   - Created a Method called reverseString(String password):
     - Ensures that sensitive information is not leaked, that the information is saved to the file of encoding.
-    - This is complish by recursively using a method called reverseString().
+    - This is accomplish by recursively using a method called reverseString().
     
 **COMPLETED**
 
         
         
-        
+       
         
         

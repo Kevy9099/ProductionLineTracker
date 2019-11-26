@@ -49,7 +49,6 @@ public class EmployeeInfo {
   private void setUsername(String name) {
     Pattern nameAfterSpace = Pattern.compile("\\s(.*)", Pattern.MULTILINE);
     Matcher nameAfterSpaceMatch = nameAfterSpace.matcher(name);
-    nameAfterSpaceMatch.find();
     String lastName = nameAfterSpaceMatch.group(1);
 
     String initials = name.substring(0, 1) + lastName;
@@ -66,8 +65,7 @@ public class EmployeeInfo {
   private boolean checkName(String name) {
     Pattern pattern = Pattern.compile("\\s");
     Matcher matcher = pattern.matcher(name);
-    if (matcher.find()) return true;
-    else return false;
+    return matcher.find();
   }
 
   /**
@@ -80,12 +78,10 @@ public class EmployeeInfo {
   private void setEmail(String name) {
     Pattern nameBeforeSpace = Pattern.compile("(.*)\\s", Pattern.MULTILINE);
     Matcher nameBeforeSpaceMatch = nameBeforeSpace.matcher(name);
-    nameBeforeSpaceMatch.find();
     String firstName = nameBeforeSpaceMatch.group(1);
 
     Pattern nameAfterSpace = Pattern.compile("\\s(.*)", Pattern.MULTILINE);
     Matcher nameAfterSpaceMatch = nameAfterSpace.matcher(name);
-    nameAfterSpaceMatch.find();
     String lastName = nameAfterSpaceMatch.group(1);
 
     this.email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@oracleacademy.Test";

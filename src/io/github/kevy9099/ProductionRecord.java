@@ -150,15 +150,18 @@ public class ProductionRecord {
    * @return productionNumber, productID, serialNumber, and a Date.
    */
   public String toString() {
-    return " Prod. Num: "
+    return "\n"
+        + "Prod. Num: "
         + productionNumber
+        + "\n"
         + " Product ID: "
         + productID
+        + "\n"
         + " Serial Num: "
         + serialNumber
+        + "\n"
         + " Date: "
-        + dateProduced;
+        + dateProduced
+        + "\n";
   }
-
-
 }

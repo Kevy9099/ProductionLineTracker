@@ -42,7 +42,7 @@ import javafx.scene.layout.GridPane;
  * @author Kevin Mak 9/24/2019
  */
 public class Controller {
-  // fx:Id initialize and connected to the FXML file.
+  // Fx:Id initialize and connected to the FXML file.
   @FXML public Button btnAddProduct;
   @FXML public Button btnRecordProduct;
   @FXML private ChoiceBox<String> chbItemType;
@@ -55,7 +55,7 @@ public class Controller {
   @FXML private TableColumn<?, ?> tbcType;
   @FXML private ListView<Product> lvtChooseProd;
 
-  // fx:Id initialize reference for CSS file.
+  // Fx:Id initialize reference for CSS file.
   @FXML private TextArea txtProdLog;
   @FXML public TextArea txtEmpLog;
   @FXML public ImageView imgProductLine;
@@ -79,7 +79,7 @@ public class Controller {
   final ObservableList<Product> productLine = FXCollections.observableArrayList();
 
   // ArrayList Of ProductionRecord.
-  ArrayList<ProductionRecord> productionRun = new ArrayList<>();
+  final ArrayList<ProductionRecord> productionRun = new ArrayList<>();
 
   /**
    * RecordButtonAction calls addToProductionDB, showProduction, LoadProductionLog. This method
@@ -92,29 +92,32 @@ public class Controller {
   @FXML
   protected void handleRecordButtonAction(ActionEvent event) throws SQLException {
 
-    // dbRecord selects an item from the listView.
+    // Selects a dbRecord item from the listView.
     Product record = lvtChooseProd.getSelectionModel().getSelectedItem();
 
-    // quantity selects a listView item and correspond it with a integer from the comboBox.
-    // cast the cbQuantity an amount of times, depending on the number chosen.
+    // Quantity selects a listView item and correspond it with a integer from the comboBox.
+    // Cast the cbQuantity an amount of times, depending on the number chosen.
     int quantity;
     quantity = Integer.parseInt(String.valueOf(cbQuantity.getSelectionModel().getSelectedItem()));
 
     // ProductionRecord variable.
     ProductionRecord pr;
 
-    // loop through the amount of quantity.
+    // Loop through the amount of quantity.
     for (int i = 0; i < quantity; i++) {
       pr = new ProductionRecord(record, i);
       productionRun.add(pr);
+      // Testing for Pr.
       System.out.println("Added pr");
     }
+
+    // Adds data into productionRecord.
     addToProductionDB(productionRun);
 
-    // calls showProduction and adds productionRun.
+    // Displays productionRun to txtProdLog.
     showProduction(productionRun);
 
-    // calls loadProductionLog and adds productionRun.
+    // Get data from the productionRecord.
     loadProductionLog(productionRun);
   }
 
@@ -167,9 +170,9 @@ public class Controller {
   private void setupProductLineTable(ObservableList<Product> productLine) {
 
     // Table columns are set to product textFields inputs.
-    tbcName.setCellValueFactory(new PropertyValueFactory("name"));
-    tbcMan.setCellValueFactory(new PropertyValueFactory("manufacturer"));
-    tbcType.setCellValueFactory(new PropertyValueFactory("type"));
+    tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
+    tbcMan.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
+    tbcType.setCellValueFactory(new PropertyValueFactory<>("type"));
 
     // Displays the Products from ProductLine in TableView.
     tbvProduction.setItems(this.productLine);
@@ -190,7 +193,7 @@ public class Controller {
     stmt = conn.createStatement();
     ResultSet rs = stmt.executeQuery(sql);
 
-    // gets items from product table.
+    // Gets items from product table.
     while (rs.next()) {
       String name = rs.getString(2);
       String manufacturer = rs.getString(3);
@@ -199,7 +202,7 @@ public class Controller {
       // Product object called dbProduct, holds name, manufacturer and type.
       Product dbProduct = new Product(name, manufacturer, ItemType.valueOf((type))) {};
 
-      // adds the dbProduct to the productLine.
+      // Adds the dbProduct to the productLine.
       productLine.add(dbProduct);
     }
   }
@@ -211,23 +214,32 @@ public class Controller {
    * @param productionRun An arrayList of productionRun.
    */
   private void addToProductionDB(ArrayList<ProductionRecord> productionRun) throws SQLException {
+    // For each productionRecord(pr) object, then productionRun adds.
     for (ProductionRecord pr : productionRun) {
 
+      // Fields for productionId, serialNUmber, and date.
       int prodID = pr.getProductID();
       String serialNum = pr.getSerialNumber();
       Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
+      // Insert into ProductionRecord, with placeholders as values.
       String sql =
           "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM,DATE_PRODUCED)VALUES (?,?,?)";
       PreparedStatement pstmt = conn.prepareStatement(sql);
 
+      // Get items from productId, serialNumber, and a date as timeStamp.
       pstmt.setInt(1, prodID);
       pstmt.setString(2, serialNum);
       pstmt.setTimestamp(3, timestamp);
 
+      // Execute preparedStatement into database.
       pstmt.executeUpdate();
 
+      // Text inserted records.
       System.out.println("Inserted records into the table...");
+
+      // Displays productionRun to txtProdLog.
+      showProduction(productionRun);
     }
   }
 
@@ -238,6 +250,7 @@ public class Controller {
    * @param productionRun An arrayList of productionRun.
    */
   private void showProduction(ArrayList<ProductionRecord> productionRun) {
+    // Sets text from productionRun array list to txtArea(txtProdLog).
     txtProdLog.setText(productionRun.toString());
   }
 
@@ -248,8 +261,11 @@ public class Controller {
    * @param productionRun An arrayList of productionRun.
    */
   private void loadProductionLog(ArrayList<ProductionRecord> productionRun) throws SQLException {
+    // Select all values from productionRecord.
     String sql = "SELECT * FROM PRODUCTIONRECORD";
     stmt = conn.createStatement();
+
+    // Execute statement into database.
     ResultSet rs = stmt.executeQuery(sql);
     while (rs.next()) {
       int number = rs.getInt("Production_Num");
@@ -257,11 +273,16 @@ public class Controller {
       String serial = rs.getString("Serial_Num");
       Date date = rs.getDate("Date_Produced");
 
+      // New object of productionRecord that calls the constructor with number,id,serial, and date.
       ProductionRecord dbRecord = new ProductionRecord(number, id, serial, date) {};
-      System.out.println("Here");
+
+      // Testing output for dbRecord
       System.out.println(dbRecord.toString());
+
+      // ProductionRun adds to dbRecord.
       productionRun.add(dbRecord);
 
+      // ShowProduction adds to productionRun.
       showProduction(productionRun);
     }
   }
@@ -271,14 +292,23 @@ public class Controller {
    * Employee Details to the console and to txtArea of Employee tab.
    */
   private void employeeDetails() {
+    // Scanner for user input.
     Scanner scan = new Scanner(System.in);
+
+    // Prompt user to enter first and last name.
     System.out.println("Enter Employee Name (first last)");
     String name = scan.nextLine();
+
+    // Prompt user to enter password.
     System.out.println("Enter Employee password");
     String password = scan.nextLine();
+
+    // New employee object that passes name and password.
     EmployeeInfo employee = new EmployeeInfo(name, password);
     System.out.println(employee.reverseString(password));
     System.out.println(employee);
+
+    // Prints employee information to textArea (txtEmpLog).
     txtEmpLog.setText(String.valueOf(employee));
   }
 
@@ -288,8 +318,8 @@ public class Controller {
    * list. Database information is pass to an observable list. This list sets the values to text
    * area, table view, and list view.
    */
-  public void initialize() throws IOException {
-    // connects and run database once for the application.
+  public void initialize() throws IOException, SQLException {
+    // Connects and run database once for the application.
     initializeDB();
 
     // Display an object of ProductionRecord in Text Area
@@ -303,7 +333,7 @@ public class Controller {
     cbQuantity.getSelectionModel().selectFirst();
     cbQuantity.setEditable(true);
 
-    // populate choiceBox with an array of values from class items. using an enhance for loop.
+    // Populate choiceBox with an array of values from class items. using an enhance for loop.
     ObservableList<String> choiceList = FXCollections.observableArrayList();
     for (ItemType it : ItemType.values()) {
       choiceList.add(String.valueOf(it));
@@ -312,6 +342,15 @@ public class Controller {
 
     // Calls method EmployeeDetails.
     employeeDetails();
+
+    // Display products in listView and tableView.
+    setupProductLineTable(productLine);
+
+    // Get data from the productionRecord.
+    loadProductionLog(productionRun);
+
+    // Get data from product.
+    loadProductList(productLine);
   }
 
   /**
