@@ -17,6 +17,7 @@ to develop an application for a media player production facility that will keep 
 # GitHub Directory
 1. [Java Class/Database Diagrams](https://github.com/Kevy9099/ProductionLineTracker/tree/master/src/JavaDiagrams)
 2. Generated Documents ~ [Index.html](https://github.com/Kevy9099/ProductionLineTracker/blob/master/docs/index.html)
+3. Signature Image ~ [Mister Kevy Production](https://github.com/Kevy9099/ProductionLineTracker/tree/master/src/io/github/kevy9099/ProductionImg)
 
 # Sprint 1 *Alpha*
 
