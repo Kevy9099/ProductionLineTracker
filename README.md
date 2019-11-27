@@ -15,7 +15,7 @@ to develop an application for a media player production facility that will keep 
 5. Basic [Java](https://www.w3schools.com/java/), [SQL](https://www.w3schools.com/sql/), and [CSS](https://www.w3schools.com/css/) syntax
 
 # GitHub Directory
-1. Java Diagrams [Diagrams](https://github.com/Kevy9099/ProductionLineTracker/tree/master/src/JavaDiagrams)
+1. [Java Class/Database Diagrams](https://github.com/Kevy9099/ProductionLineTracker/tree/master/src/JavaDiagrams)
 
 # Sprint 1 *Alpha*
 
