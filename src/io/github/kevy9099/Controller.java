@@ -90,8 +90,7 @@ public class Controller {
    * @param event when the Add button is pressed, and input stores to db.
    */
   @FXML
-  protected void handleRecordButtonAction(ActionEvent event) throws SQLException {
-
+  public void handleRecordButtonAction(ActionEvent event) throws SQLException {
     // Selects a dbRecord item from the listView.
     Product record = lvtChooseProd.getSelectionModel().getSelectedItem();
 

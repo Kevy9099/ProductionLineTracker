@@ -14,7 +14,6 @@ import javafx.stage.Stage;
  * recorded and logged. Also, this application will have the ability to add to the production line.
  *
  * @author Kevin Mak 09/21/2019
- * @github https://github.com/Kevy9099/ProductionLineTracker
  */
 public class Main extends Application {
 
