@@ -15,7 +15,7 @@ to develop an application for a media player production facility that will keep 
 5. Basic [Java](https://www.w3schools.com/java/), [SQL](https://www.w3schools.com/sql/), and [CSS](https://www.w3schools.com/css/) syntax
 
 # GitHub Directory
-1. [Java Class/Database Diagrams](https://github.com/Kevy9099/ProductionLineTracker/tree/master/src/JavaDiagrams)
+1. [Java Class/Database Diagrams](https://github.com/Kevy9099/ProductionLineTracker/tree/master/JavaDiagrams)
 2. Generated Documents ~ [Index.html](https://github.com/Kevy9099/ProductionLineTracker/blob/master/docs/index.html)
 3. Signature Image ~ [Mister Kevy Production](https://github.com/Kevy9099/ProductionLineTracker/tree/master/src/io/github/kevy9099/ProductionImg)
 
