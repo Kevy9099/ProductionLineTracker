@@ -106,6 +106,7 @@ public class Controller {
     for (int i = 0; i < quantity; i++) {
       pr = new ProductionRecord(record, i);
       productionRun.add(pr);
+
       // Testing for Pr.
       System.out.println("Added pr");
     }
@@ -359,7 +360,7 @@ public class Controller {
   private void initializeDB() throws IOException {
     // Connection establish.
     final String jdbcDriver = "org.h2.Driver";
-    final String dbUrl = "jdbc:h2:./Lib/ProductDB";
+    final String dbUrl = "jdbc:h2:./Lib/productDb";
 
     // Initialize a User and Pass.
     final String user = "";
