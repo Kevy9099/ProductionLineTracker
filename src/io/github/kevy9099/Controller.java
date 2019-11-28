@@ -170,9 +170,9 @@ public class Controller {
   private void setupProductLineTable(ObservableList<Product> productLine) {
 
     // Table columns are set to product textFields inputs.
-    tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
-    tbcMan.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
-    tbcType.setCellValueFactory(new PropertyValueFactory<>("type"));
+    tbcName.setCellValueFactory(new PropertyValueFactory("name"));
+    tbcMan.setCellValueFactory(new PropertyValueFactory("manufacturer"));
+    tbcType.setCellValueFactory(new PropertyValueFactory("type"));
 
     // Displays the Products from ProductLine in TableView.
     tbvProduction.setItems(this.productLine);

@@ -49,9 +49,9 @@ public class EmployeeInfo {
   private void setUsername(String name) {
     Pattern nameAfterSpace = Pattern.compile("\\s(.*)", Pattern.MULTILINE);
     Matcher nameAfterSpaceMatch = nameAfterSpace.matcher(name);
-    String lastName = nameAfterSpaceMatch.group(1);
+      String lastName = nameAfterSpaceMatch.group(1);
 
-    String initials = name.substring(0, 1) + lastName;
+      String initials = name.substring(0, 1) + lastName;
 
     this.username = initials.toLowerCase();
   }
