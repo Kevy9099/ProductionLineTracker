@@ -28,8 +28,6 @@ public class Main extends Application {
   public void start(Stage primaryStage) throws Exception {
     // parent root, parent scene, and primaryStage.
     Parent root = FXMLLoader.load(getClass().getResource("Production.fxml"));
-//    FXMLLoader loader = new FXMLLoader(Main.class.getResource("Production.fxml"));
-//    Parent root =  loader.load();
     Scene scene = new Scene(root);
     root.setId("pane");
     primaryStage.setTitle("Production Line Tracker");

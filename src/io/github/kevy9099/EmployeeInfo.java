@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
  * username, password and an email. (log In) it validates a password for each employee and checks
  * for employee name.
  */
+@SuppressWarnings("ALL")
 public class EmployeeInfo {
 
   final StringBuilder name;
@@ -49,8 +50,8 @@ public class EmployeeInfo {
   private void setUsername(String name) {
     Pattern nameAfterSpace = Pattern.compile("\\s(.*)", Pattern.MULTILINE);
     Matcher nameAfterSpaceMatch = nameAfterSpace.matcher(name);
+    nameAfterSpaceMatch.find();
       String lastName = nameAfterSpaceMatch.group(1);
-
       String initials = name.substring(0, 1) + lastName;
 
     this.username = initials.toLowerCase();
@@ -78,10 +79,12 @@ public class EmployeeInfo {
   private void setEmail(String name) {
     Pattern nameBeforeSpace = Pattern.compile("(.*)\\s", Pattern.MULTILINE);
     Matcher nameBeforeSpaceMatch = nameBeforeSpace.matcher(name);
+    nameBeforeSpaceMatch.find();
     String firstName = nameBeforeSpaceMatch.group(1);
 
     Pattern nameAfterSpace = Pattern.compile("\\s(.*)", Pattern.MULTILINE);
     Matcher nameAfterSpaceMatch = nameAfterSpace.matcher(name);
+    nameAfterSpaceMatch.find();
     String lastName = nameAfterSpaceMatch.group(1);
 
     this.email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@oracleacademy.Test";

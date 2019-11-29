@@ -13,26 +13,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Scanner;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 /**
  * Controller class handles results and actions, such as: buttons, establishes database connection,
@@ -54,6 +46,10 @@ public class Controller {
   @FXML private TableColumn<?, ?> tbcMan;
   @FXML private TableColumn<?, ?> tbcType;
   @FXML private ListView<Product> lvtChooseProd;
+  @FXML private TextField firstName;
+  @FXML private GridPane loginGrid;
+  @FXML private TextField txtPassword;
+  @FXML private Button btnLogin;
 
   // Fx:Id initialize reference for CSS file.
   @FXML private TextArea txtProdLog;
@@ -82,6 +78,16 @@ public class Controller {
   final ArrayList<ProductionRecord> productionRun = new ArrayList<>();
 
   /**
+   * Enter button when pressed, enters employee detail profile.
+   *
+   * @param event Logging into employee profile.
+   */
+  @FXML
+  public void handleEnterButtonAction(ActionEvent event) {
+    employeeDetails();
+  }
+
+  /**
    * RecordButtonAction calls addToProductionDB, showProduction, LoadProductionLog. This method
    * creates an ArrayList of ProductionRecord called productionRun, that associates with productLine
    * listView items. Selecting an item will get productionLog information, display on Production Log
@@ -106,10 +112,13 @@ public class Controller {
     for (int i = 0; i < quantity; i++) {
       pr = new ProductionRecord(record, i);
       productionRun.add(pr);
-
-      // Testing for Pr.
-      System.out.println("Added pr");
     }
+
+    // Message Confirmation "Product Recorded!"
+    Alert a = new Alert(Alert.AlertType.NONE);
+    a.setAlertType(Alert.AlertType.CONFIRMATION);
+    a.setContentText("Product Recorded! ");
+    a.show();
 
     // Adds data into productionRecord.
     addToProductionDB(productionRun);
@@ -153,6 +162,12 @@ public class Controller {
     // Clears the text field of name and manufacturer.
     txtName.clear();
     txtMan.clear();
+
+    // Message Confirmation "Product Added!"
+    Alert a = new Alert(Alert.AlertType.NONE);
+    a.setAlertType(Alert.AlertType.CONFIRMATION);
+    a.setContentText("Product Added! ");
+    a.show();
 
     //  Adds Items of Product to TableView and ListView.
     setupProductLineTable(productLine);
@@ -235,9 +250,6 @@ public class Controller {
       // Execute preparedStatement into database.
       pstmt.executeUpdate();
 
-      // Text inserted records.
-      System.out.println("Inserted records into the table...");
-
       // Displays productionRun to txtProdLog.
       showProduction(productionRun);
     }
@@ -292,16 +304,11 @@ public class Controller {
    * Employee Details to the console and to txtArea of Employee tab.
    */
   private void employeeDetails() {
-    // Scanner for user input.
-    Scanner scan = new Scanner(System.in);
-
     // Prompt user to enter first and last name.
-    System.out.println("Enter Employee Name (first last)");
-    String name = scan.nextLine();
+    String name = firstName.getText();
 
     // Prompt user to enter password.
-    System.out.println("Enter Employee password");
-    String password = scan.nextLine();
+    String password = txtPassword.getText();
 
     // New employee object that passes name and password.
     EmployeeInfo employee = new EmployeeInfo(name, password);
@@ -310,6 +317,11 @@ public class Controller {
 
     // Prints employee information to textArea (txtEmpLog).
     txtEmpLog.setText(String.valueOf(employee));
+
+    Alert a = new Alert(Alert.AlertType.NONE);
+    a.setAlertType(Alert.AlertType.CONFIRMATION);
+    a.setContentText("You've been signed in!");
+    a.show();
   }
 
   /**
@@ -339,9 +351,6 @@ public class Controller {
       choiceList.add(String.valueOf(it));
     }
     chbItemType.getItems().addAll(choiceList);
-
-    // Calls method EmployeeDetails.
-    employeeDetails();
 
     // Display products in listView and tableView.
     setupProductLineTable(productLine);
