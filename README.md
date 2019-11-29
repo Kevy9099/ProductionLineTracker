@@ -27,7 +27,7 @@ This project took hours to complete. Therefore, I worked on the project both at 
 # Contributing
 
 # License
-
+[](https://github.com/Kevy9099/ProductionLineTracker/blob/master/LICENSE)
 # Author
 Kevin Mak ~ Majoring in Software Engineering, B.S. at Florida Gulf Coast University.
 
