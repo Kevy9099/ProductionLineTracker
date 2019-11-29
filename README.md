@@ -10,14 +10,40 @@ This project took hours to complete. Therefore, I worked on the project both at 
 # Demonstration
 
 # Documentation
-1. Generated Documents ~ [JavaDoc](https://github.com/Kevy9099/ProductionLineTracker/blob/master/docs/index.html)
+ **Generated Documents** 
+ [JavaDoc](https://github.com/Kevy9099/ProductionLineTracker/blob/master/docs/index.html)
 
 # Diagrams / Signature Images
-![Java Class and Database Diagrams]()
-1. [Java Class/Database Diagrams](https://github.com/Kevy9099/ProductionLineTracker/tree/master/JavaDiagrams)
-2. Signature Image ~ [Mister Kevy Production](https://github.com/Kevy9099/ProductionLineTracker/tree/master/src/io/github/kevy9099/ProductionImg)
+**Java Class Diagrams**</b>
+![Class Image 1](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/JavaDiagramRelease.png)
+![Class Image 2](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/JavaDiagramRelease2.png)
+ 
+ **Database Diagrams (Only display two)**</b>
+ ![Database Image 1](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/dbDiagram1.png)
+ ![Database Image 2](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/dbDiagram5.png)
+ 
+ **Signature Image**</b>
+ ![Mister Kevy Production](https://github.com/Kevy9099/ProductionLineTracker/blob/master/src/io/github/kevy9099/ProductionImg/kevy.PNG)
 
 # Getting Started
+**Instrucctions for copy of project:**
+1. Click on the green button that says *"Clone or download"*.
+2. Either Download the Zip file or clone the HTTPS.
+3. If you Download the Zip:
+  - Unzip and open the project in your IDE.
+4. If you clone the HTTPS, In your IDE: 
+  - File > New > Project From verison control > Enter URL/HTTP > Choose the directory for project > clone
+5. Be sure to create a new Database in console (password = dbPw)
+  - Database tab > Plus sign > Data source from path > Choose directory for database (ex: Lib Folder) > h2 > test connection > apply
+6. Link Jar file by:
+  - File > Project structure > Modules > Dependencies > Find and Choose jar file > apply
+7. Start Coding! 
+
+**Fork Project or Branch**
+- Fork: Click on the fork tab. It shouldc create a project with your Github repo.
+- Click on Branch: master and create a new branch for yourself.
+- Merge for both: 
+  - Create a pull request and follow the steps.
 
 # Built with
 - IntelliJ IDE 
@@ -25,9 +51,16 @@ This project took hours to complete. Therefore, I worked on the project both at 
 - JavaFx GUI, Database H2, SQL
 
 # Contributing
-
+  **Contributing to this project:**
+  - Improve on employeeInfo [regex expression](https://regex101.com/).
+  - Improve Database and SQL console.
+  - Improve Java Code Style.
+  - Improve Login Employee Details, Create a Employee table, and record each Employee.
+  - Improve Movieplayer for actual use.
+  
 # License
-[](https://github.com/Kevy9099/ProductionLineTracker/blob/master/LICENSE)
+[BSD 3-Clause License] (https://github.com/Kevy9099/ProductionLineTracker/blob/master/LICENSE)
+
 # Author
 Kevin Mak ~ Majoring in Software Engineering, B.S. at Florida Gulf Coast University.
 
