@@ -8,9 +8,10 @@ At the start of the project (September 14, 2019) my proficiency in database, Jav
 This project took hours to complete. Therefore, I worked on the project both at school and home.<br/>
 
 # Demonstration
+![Mister Kevy Gif](https://media.giphy.com/media/h5uJ5d9qiduBd7mSlT/giphy.gif)
 
 # Documentation
- **Generated Documents** 
+ **Generated Documents**<br>
  [JavaDoc](https://github.com/Kevy9099/ProductionLineTracker/blob/master/docs/index.html)
 
 # Diagrams / Signature Images
