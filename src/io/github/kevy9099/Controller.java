@@ -12,19 +12,15 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
-import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 
 /**
  * Controller class handles results and actions, such as: buttons, establishes database connection,
@@ -46,10 +42,9 @@ public class Controller {
   @FXML private TableColumn<?, ?> tbcMan;
   @FXML private TableColumn<?, ?> tbcType;
   @FXML private ListView<Product> lvtChooseProd;
-  @FXML private TextField firstName;
-  @FXML private GridPane loginGrid;
+  @FXML private TextField fullName;
   @FXML private TextField txtPassword;
-  @FXML private Button btnLogin;
+
 
   // Fx:Id initialize reference for CSS file.
   @FXML private TextArea txtProdLog;
@@ -66,6 +61,10 @@ public class Controller {
   @FXML public GridPane grid1;
   @FXML public Label lblExistProd;
   @FXML public AnchorPane ancRecordPane;
+  @FXML public Button btnLogin;
+  @FXML public Tab tabLogin;
+  @FXML public GridPane gridLogin;
+  @FXML public Label lblWelcome;
 
   // Global Variable Connection and Statement.
   private Connection conn;
@@ -305,7 +304,7 @@ public class Controller {
    */
   private void employeeDetails() {
     // Prompt user to enter first and last name.
-    String name = firstName.getText();
+    String name = fullName.getText();
 
     // Prompt user to enter password.
     String password = txtPassword.getText();

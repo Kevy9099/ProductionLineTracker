@@ -52,6 +52,7 @@
     -fx-font-family: "Courier New";
     -fx-font-weight: bold;
 }
+
 #lblExistProd {
     -fx-font-size: 15px ;
     -fx-font-family: "Courier New";
@@ -143,4 +144,41 @@
     -fx-background-image: url("ProductionImg/kevy.PNG");
     -fx-background-color: #8fb5bd;
 }
+
+#tabLogin{
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-background-color: #8fb5bd;
+    -fx-border-color: black;
+}
+
+#tabLogin:hover{
+    -fx-background-color: red;
+}
+
+#gridLogin {
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+
+#btnLogin {
+    -fx-text-fill: black;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#848a94, #d6d8db);
+    -fx-effect: dropShadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#btnLogin:hover {
+    -fx-background-color: linear-gradient(#d6d8db, #848a94);
+}
+
+#lblWelcome{
+    -fx-font-size: 15px ;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+}
+
 
