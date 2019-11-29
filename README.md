@@ -14,15 +14,15 @@ This project took hours to complete. Therefore, I worked on the project both at 
  [JavaDoc](https://github.com/Kevy9099/ProductionLineTracker/blob/master/docs/index.html)
 
 # Diagrams / Signature Images
-**Java Class Diagrams**</b>
+**Java Class Diagrams**
 ![Class Image 1](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/JavaDiagramRelease.png)
 ![Class Image 2](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/JavaDiagramRelease2.png)
  
- **Database Diagrams (Only display two)**</b>
+ **Database Diagrams (Only display two)**
  ![Database Image 1](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/dbDiagram1.png)
  ![Database Image 2](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/dbDiagram5.png)
  
- **Signature Image**</b>
+ **Signature Image**</br>
  ![Mister Kevy Production](https://github.com/Kevy9099/ProductionLineTracker/blob/master/src/io/github/kevy9099/ProductionImg/kevy.PNG)
 
 # Getting Started
@@ -245,32 +245,32 @@ Initial Password : aBcd!
 
 # Key Programming Concepts Utilized
 **Object-Oriented Programming**
-1. Objects: Building blocks of object-oriented. Each object is a programming unit consisting of data (instance variables) and functionality (instance methods).</b>
-2. Class: A blue-print, a type that defines the implementation of a particular kind of object.</b>
-3. Inheritance: The concept of classes automatically containing the variables and methods defined in their supertypes .</b>
-4. Polymorphism: Polymorphism allows us to perform a single action in different ways. polymorphism allows you to define one interface and have multiple implementations.</b>
-5. Abstract: Keyword used in a class definition to specify that a class is not to be instantiated, but rather inherited by other classes.</b>
-6. Interface: keyword used to define a collection of method definitions and constant values. It can later be implemented by classes that define this interface with the "implements" keyword.</b>
-7. Enum: A keyword used to declare an enumerated type. Legal values consist of a fixed set of constants</b>
-9. Lambda Expressions: enable you to treat functionality as method argument, or code as data.</b>
-10. Recursion: The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function.</b>
-11. Implement:  A keyword that is included in the class declaration to specify any interfaces that are implemented by the current class.</b>
-13. Overload: Using one identifier to refer to multiple items in the same scope.</b>
-14. Methods:A function defined in a class.</b>
-15. Fields: A data member of a class.</b>
-16. Extends: Class X extends class Y to add functionality, either by adding fields or methods to class Y, or by overriding methods of class Y.</b>
+1. Objects: Building blocks of object-oriented. Each object is a programming unit consisting of data (instance variables) and functionality (instance methods).
+2. Class: A blue-print, a type that defines the implementation of a particular kind of object.
+3. Inheritance: The concept of classes automatically containing the variables and methods defined in their supertypes.
+4. Polymorphism: Polymorphism allows us to perform a single action in different ways. polymorphism allows you to define one interface and have multiple implementations.
+5. Abstract: Keyword used in a class definition to specify that a class is not to be instantiated, but rather inherited by other classes.
+6. Interface: keyword used to define a collection of method definitions and constant values. It can later be implemented by classes that define this interface with the "implements" keyword.
+7. Enum: A keyword used to declare an enumerated type. Legal values consist of a fixed set of constants
+9. Lambda Expressions: enable you to treat functionality as method argument, or code as data.
+10. Recursion: The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function.
+11. Implement:  A keyword that is included in the class declaration to specify any interfaces that are implemented by the current class.
+13. Overload: Using one identifier to refer to multiple items in the same scope.
+14. Methods:A function defined in a class.
+15. Fields: A data member of a class.
+16. Extends: Class X extends class Y to add functionality, either by adding fields or methods to class Y, or by overriding methods of class Y.
 
 **SQL**
-1. Insert: Insert new records in database. </b>
-2. Into: Insert new records in table.</b>
-3. Values: What needs to be inserted. </b>
-2. Select: Select data from a database.</b>
-3. From: Select data from a column.</b>
-4. Asterisk: Choose ALL values.</b>
-5. Update: Modify the existing records in a table.</b>
-7. Set: Table to update. </b>
-8. Unique: Delete existing records in a table.</b>
-10. Where Clause: Specifies which record(s) that should be updated.</b>
+1. Insert: Insert new records in database. 
+2. Into: Insert new records in table.
+3. Values: What needs to be inserted. 
+2. Select: Select data from a database.
+3. From: Select data from a column.
+4. Asterisk: Choose ALL values.
+5. Update: Modify the existing records in a table.
+7. Set: Table to update. 
+8. Unique: Delete existing records in a table.
+10. Where Clause: Specifies which record(s) that should be updated.
 
         
         
