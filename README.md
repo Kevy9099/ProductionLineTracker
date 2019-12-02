@@ -60,7 +60,7 @@ This project took hours to complete. Therefore, I worked on the project both at 
   - Improve Movieplayer for actual use.
   
 # License
-[BSD 3-Clause License] (https://github.com/Kevy9099/ProductionLineTracker/blob/master/LICENSE)
+[BSD 3-Clause License](https://github.com/Kevy9099/ProductionLineTracker/blob/master/LICENSE)
 
 # Author
 Kevin Mak ~ Majoring in Software Engineering, B.S. at Florida Gulf Coast University.
