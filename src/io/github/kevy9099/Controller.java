@@ -77,11 +77,11 @@ public class Controller {
   @FXML public GridPane gridLogin;
   @FXML public Label lblWelcome;
 
-  // Global Variable Connection and Statement.
+  // Local Variable Connection and Statement.
   private Connection conn;
   private Statement stmt;
 
-  // Global ObservableList.
+  // Local ObservableList.
   final ObservableList<Product> productLine = FXCollections.observableArrayList();
 
   // ArrayList Of ProductionRecord.
@@ -274,7 +274,7 @@ public class Controller {
   private void showProduction(ArrayList<ProductionRecord> productionRun) {
     // Sets text from productionRun array list to txtArea(txtProdLog).
     txtProdLog.setText(productionRun.toString());
-  }
+  };
 
   /**
    * A function that select all from productionRecord ( productionNumber, productionId, serial and

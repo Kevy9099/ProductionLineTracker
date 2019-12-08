@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>io.github.kevy9099</OriginalElement>
+  <nodes>
+    <node x="1119.0" y="1108.0">io.github.kevy9099.ProductionImg</node>
+    <node x="925.0" y="1108.0">io.github.kevy9099.Main</node>
+    <node x="0.0" y="1108.0">io.github.kevy9099.EmployeeInfo</node>
+    <node x="1039.25" y="156.0">io.github.kevy9099.MultimediaControl</node>
+    <node x="751.0" y="1108.0">io.github.kevy9099.MonitorType</node>
+    <node x="394.00000000000006" y="453.0">io.github.kevy9099.Widget</node>
+    <node x="1276.0" y="147.0">io.github.kevy9099.Screen</node>
+    <node x="965.0" y="356.0">io.github.kevy9099.AudioPlayer</node>
+    <node x="600.25" y="125.0">io.github.kevy9099.Product</node>
+    <node x="1297.0" y="0.0">io.github.kevy9099.ScreenSpec</node>
+    <node x="263.0" y="1108.0">io.github.kevy9099.ProductionRecord</node>
+    <node x="636.0" y="356.0">io.github.kevy9099.MoviePlayer</node>
+    <node x="0.0" y="0.0">io.github.kevy9099.Controller</node>
+    <node x="565.0" y="1108.0">io.github.kevy9099.ItemType</node>
+    <node x="643.75" y="0.0">io.github.kevy9099.Item</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="io.github.kevy9099.MoviePlayer" target="io.github.kevy9099.MultimediaControl">
+      <point x="77.25" y="-123.5" />
+      <point x="867.75" y="336.0" />
+      <point x="1081.0" y="336.0" />
+      <point x="-41.75" y="59.5" />
+    </edge>
+    <edge source="io.github.kevy9099.Screen" target="io.github.kevy9099.ScreenSpec">
+      <point x="0.0" y="-90.5" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="io.github.kevy9099.MoviePlayer" target="io.github.kevy9099.Product">
+      <point x="-77.25" y="-123.5" />
+      <point x="0.0" y="90.5" />
+    </edge>
+    <edge source="io.github.kevy9099.AudioPlayer" target="io.github.kevy9099.MultimediaControl">
+      <point x="66.5" y="-123.5" />
+      <point x="41.75" y="59.5" />
+    </edge>
+    <edge source="io.github.kevy9099.Widget" target="io.github.kevy9099.Product">
+      <point x="0.0" y="-26.5" />
+      <point x="505.00000000000006" y="336.0" />
+      <point x="637.9166666666667" y="336.0" />
+      <point x="-75.33333333333337" y="90.5" />
+    </edge>
+    <edge source="io.github.kevy9099.AudioPlayer" target="io.github.kevy9099.Product">
+      <point x="-66.5" y="-123.5" />
+      <point x="1031.5" y="326.0" />
+      <point x="788.5833333333333" y="326.0" />
+      <point x="75.33333333333326" y="90.5" />
+    </edge>
+    <edge source="io.github.kevy9099.Product" target="io.github.kevy9099.Item">
+      <point x="0.0" y="-90.5" />
+      <point x="0.0" y="37.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.38792505204718947" x="721.0" y="710.5" />
+  <SelectedNodes>
+    <node>io.github.kevy9099.ProductionImg</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
