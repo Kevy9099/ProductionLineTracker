@@ -27,7 +27,7 @@ This project took hours to complete. Therefore, I worked on the project both at 
  ![Mister Kevy Production](https://github.com/Kevy9099/ProductionLineTracker/blob/master/src/io/github/kevy9099/ProductionImg/kevy.PNG)
 
 # Getting Started
-**Instrucctions for copy of project:**
+**Instructions for copy of project:**
 1. Click on the green button that says *"Clone or download"*.
 2. Either Download the Zip file or clone the HTTPS.
 3. If you Download the Zip:
