@@ -16,13 +16,8 @@ This project took hours to complete. Therefore, I worked on the project both at 
 
 # Diagrams / Signature Images
 **Java Class Diagrams**
-![Class Image 1](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/JavaDiagramRelease.png)
-![Class Image 2](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/JavaDiagramRelease2.png)
- 
- **Database Diagrams (Only display two)**
- ![Database Image 1](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/dbDiagram1.png)
- ![Database Image 2](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/dbDiagram5.png)
- 
+![Class Diagram](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/kevy9099.uml)
+
  **Signature Image**</br>
  ![Mister Kevy Production](https://github.com/Kevy9099/ProductionLineTracker/blob/master/src/io/github/kevy9099/ProductionImg/kevy.PNG)
 
