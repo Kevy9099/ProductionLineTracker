@@ -16,7 +16,7 @@ This project took hours to complete. Therefore, I worked on the project both at 
 
 # Diagrams / Signature Images
 **Java Class Diagrams**
-![Class Diagram](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/kevy9099.uml)
+![Class Diagram](https://github.com/Kevy9099/ProductionLineTracker/blob/master/JavaDiagrams/kevy9099.jpg)
 
  **Signature Image**</br>
  ![Mister Kevy Production](https://github.com/Kevy9099/ProductionLineTracker/blob/master/src/io/github/kevy9099/ProductionImg/kevy.PNG)
